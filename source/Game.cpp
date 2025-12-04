@@ -3,6 +3,7 @@
 #include "InputManager.h"
 #include "SceneManager.h"
 #include "Gameplay.h"
+#include "MainMenu.h"
 #include <cassert>
 
 
@@ -19,10 +20,12 @@ void Game::Init() {
 	RM->LoadFont("resources/fonts/hyperspace.ttf");
 
 	//Aqui la carrega de totes les escenes
+	assert(SM.AddScene("MainMenu", new MainMenu()));
 	assert(SM.AddScene("Gameplay", new Gameplay()));
 
 
-	assert(SM.InitFirstScene("Gameplay"));
+	assert(SM.InitFirstScene("MainMenu"));
+	//assert(SM.InitFirstScene("Gameplay"));
 
 	_isRunning = !IM->Listen();
 }
