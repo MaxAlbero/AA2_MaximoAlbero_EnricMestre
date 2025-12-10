@@ -30,6 +30,10 @@ public:
 		}
 	}
 
+	int GetSpawnedObjectCount() {
+		return spawnedObjects.size();
+	}
+
 private:
 	Spawner() = default;
 	Spawner(Spawner&) = delete;

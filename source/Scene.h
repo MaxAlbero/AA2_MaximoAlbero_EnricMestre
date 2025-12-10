@@ -67,7 +67,8 @@ public:
 		for (int i = 0; i < size; i++) {
 			for (int j = i + 1; j < _objects.size(); j++) {
 				if (_objects[i]->GetRigidBody()->CheckCollision(_objects[j]->GetRigidBody())) {
-					//...
+					_objects[i]->OnCollision(_objects[j]);
+					_objects[j]->OnCollision(_objects[i]);
 				}
 			}
 		}

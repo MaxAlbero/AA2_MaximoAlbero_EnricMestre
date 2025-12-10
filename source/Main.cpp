@@ -17,7 +17,7 @@ int main() {
 	while (game.IsRunning()) {
 		
 		TM.Update();
-		std::cout << TM.GetElapsedTime() << std::endl;
+		//std::cout << TM.GetElapsedTime() << std::endl;
 		if (TM.ShouldUpdateGame())
 		{
 			game.HandleEvents();

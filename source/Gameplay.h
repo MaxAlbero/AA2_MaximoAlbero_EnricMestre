@@ -2,6 +2,7 @@
 #include "TextObject.h"
 #include "Scene.h"
 #include "TestObject.h"
+#include "Enemy.h"
 
 
 
@@ -11,9 +12,9 @@ public:
 
 	void OnEnter() override {
 		SPAWNER.SpawnObject(new TestObject());
-		SPAWNER.SpawnObject(new TestObject());
+		SPAWNER.SpawnObject(new Enemy());
 
-		TextObject* text = new TextObject("Hola");
+		TextObject* text = new TextObject("UASINI");
 		text->GetTransform()->position = { 100.0f, 100.0f };
 		_ui.push_back(text);
 	}
