@@ -17,6 +17,8 @@ void Game::Init() {
 
 	//Aqui la carrega de tots els recursos del joc
 	RM->LoadTexture("resources/image.png");
+	RM->LoadTexture("resources/UmaSentimiento.jpg");
+
 	RM->LoadFont("resources/fonts/hyperspace.ttf");
 
 	//Aqui la carrega de totes les escenes

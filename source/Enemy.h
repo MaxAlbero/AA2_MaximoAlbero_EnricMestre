@@ -1,6 +1,6 @@
 #pragma once
 #include "ImageObject.h"
-#include "RenderManager.h"
+//#include "RenderManager.h"
 #include "Spawner.h"
 
 class Enemy : public ImageObject
@@ -12,7 +12,7 @@ private:
 	float angularSpeed = 0.01f;
 public:
 	Enemy()
-		: ImageObject("resources/image.png", Vector2(0.f, 0.f), Vector2(100.f, 100.f)) 
+		: ImageObject("resources/image.png", Vector2(0.f, 0.f), Vector2(306.f, 562.f))
 	{
 		_transform->size = Vector2(150.f, 150.f);
 		_transform->position = Vector2(RM->WINDOW_WIDTH / 1.2f, RM->WINDOW_HEIGHT / 2.f);

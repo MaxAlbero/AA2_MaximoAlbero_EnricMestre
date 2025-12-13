@@ -20,18 +20,25 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\AABB.cpp" />
+    <ClCompile Include="source\Bullet.cpp" />
+    <ClCompile Include="source\Button.cpp" />
+    <ClCompile Include="source\Enemy.cpp" />
     <ClCompile Include="source\InputManager.cpp" />
     <ClCompile Include="source\ImageObject.cpp" />
     <ClCompile Include="source\ImageRenderer.cpp" />
     <ClCompile Include="source\Game.cpp" />
     <ClCompile Include="source\main.cpp" />
+    <ClCompile Include="source\MainMenu.cpp" />
     <ClCompile Include="source\RenderManager.cpp" />
     <ClCompile Include="source\RigidBody.cpp" />
     <ClCompile Include="source\TextRenderer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\AABB.h" />
+    <ClInclude Include="source\Background.h" />
+    <ClInclude Include="source\Bullet.h" />
     <ClInclude Include="source\Button.h" />
+    <ClInclude Include="source\Enemy.h" />
     <ClInclude Include="source\Gameplay.h" />
     <ClInclude Include="source\InputManager.h" />
     <ClInclude Include="source\ImageObject.h" />
@@ -44,6 +51,7 @@
     <ClInclude Include="source\RigidBody.h" />
     <ClInclude Include="source\Scene.h" />
     <ClInclude Include="source\SceneManager.h" />
+    <ClInclude Include="source\Scroll.h" />
     <ClInclude Include="source\Spawner.h" />
     <ClInclude Include="source\TestObject.h" />
     <ClInclude Include="source\TextObject.h" />
@@ -54,6 +62,10 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="resources\image.png" />
+    <Image Include="resources\UmaSentimiento.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include=".gitignore" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
