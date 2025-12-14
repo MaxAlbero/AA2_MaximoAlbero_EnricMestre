@@ -10,12 +10,12 @@ public:
 	Scroll() = default;
 
 
-	void AddBackground() {
-		Background* bg1 = new Background();
-		bg1->GetTransform()->position = { (float)RM->WINDOW_WIDTH / 2.0f, (float)RM->WINDOW_HEIGHT / 2.0f };
-		Background* bg2 = new Background();
-		bg2->GetTransform()->position = { (float)RM->WINDOW_WIDTH / 2.0f, (float)RM->WINDOW_HEIGHT / 2.0f };
-	}
+	//void AddBackground() {
+	//	Background* bg1 = new Background();
+	//	bg1->GetTransform()->position = { (float)RM->WINDOW_WIDTH / 2.0f, (float)RM->WINDOW_HEIGHT / 2.0f };
+	//	Background* bg2 = new Background();
+	//	bg2->GetTransform()->position = { (float)RM->WINDOW_WIDTH / 2.0f, (float)RM->WINDOW_HEIGHT / 2.0f };
+	//}
 
 	
 };

@@ -22,6 +22,7 @@ public:
 
 	void SetLifeTime() {
 		if (_transform->position.x > RM->WINDOW_WIDTH) {
+			std::cout << "PEW PEW" << std::endl;
 			Destroy();
 		}
 	}

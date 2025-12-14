@@ -26,8 +26,8 @@ void Game::Init() {
 	assert(SM.AddScene("Gameplay", new Gameplay()));
 
 
-	assert(SM.InitFirstScene("MainMenu"));
-	//assert(SM.InitFirstScene("Gameplay"));
+	//assert(SM.InitFirstScene("MainMenu"));
+	assert(SM.InitFirstScene("Gameplay"));
 
 	_isRunning = !IM->Listen();
 }

@@ -18,10 +18,11 @@ public:
 	void OnEnter() override {
 
 		Background* bg1 = new Background();
-		bg1->GetTransform()->position = { (float)RM->WINDOW_WIDTH / 2.0f, (float)RM->WINDOW_HEIGHT / 2.0f };
+		bg1->GetTransform()->position = { (float)RM->WINDOW_WIDTH, (float)RM->WINDOW_HEIGHT / 2.0f };
 		bg1->GetTransform()->size = { 1000.f, 1000.f };
 		Background* bg2 = new Background();
 		bg2->GetTransform()->position = { (float)RM->WINDOW_WIDTH / 3.0f, (float)RM->WINDOW_HEIGHT / 2.0f };
+		bg2->GetTransform()->size = { 1000.f, 1000.f };
 
 		SPAWNER.SpawnObject(bg1);
 		SPAWNER.SpawnObject(bg2);
