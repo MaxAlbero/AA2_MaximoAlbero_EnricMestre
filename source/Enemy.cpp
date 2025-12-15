@@ -15,7 +15,7 @@ void Enemy::OnCollision(Object* other)
 	}
 }
 
-void Enemy::MovingEnemy() {
+void Enemy::EnemyBehaviour() {
 	Vector2 center = Vector2(RM->WINDOW_WIDTH / 1.3f, RM->WINDOW_HEIGHT / 2.f);
 
 	float pi = 3.14159f;

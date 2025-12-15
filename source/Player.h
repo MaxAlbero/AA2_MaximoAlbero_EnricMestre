@@ -7,7 +7,7 @@
 #include "IAttacker.h"
 #include "IDamageable.h"
 
-class Player : public ImageObject, IAttacker, IDamageable
+class Player : public ImageObject/*, IAttacker, IDamageable*/
 {
 protected:
 	int energy; //shields/shieldsPower... values from 0 to 100

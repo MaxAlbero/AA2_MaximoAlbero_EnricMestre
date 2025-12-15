@@ -5,7 +5,7 @@
 #include "IAttacker.h"
 #include "IDamageable.h"
 
-class Enemy : public ImageObject, IAttacker, IDamageable
+class Enemy : public ImageObject/*, IAttacker, IDamageable*/
 {
 private:
 	int health = 1;
@@ -22,11 +22,11 @@ public:
 	}
 
 	virtual void Update() override {
-		MovingEnemy();
+		EnemyBehaviour();
 		Object::Update();
 	}
 
 	void OnCollision(Object* other) override;
-	void MovingEnemy();
+	void EnemyBehaviour();
 };
 
