@@ -2,6 +2,7 @@
 #include "TextObject.h"
 #include "Scene.h"
 #include "TestObject.h"
+#include "Player.h"
 #include "Enemy.h"
 
 #include "Background.h"
@@ -28,7 +29,7 @@ public:
 		SPAWNER.SpawnObject(bg2);
 
 
-		SPAWNER.SpawnObject(new TestObject());
+		SPAWNER.SpawnObject(new Player());
 		SPAWNER.SpawnObject(new Enemy());
 
 		
