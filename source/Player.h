@@ -4,10 +4,15 @@
 #include "InputManager.h"
 #include "Bullet.h"
 #include "Spawner.h"
+#include "IAttacker.h"
+#include "IDamageable.h"
 
-
-class Player : public ImageObject
+class Player : public ImageObject, IAttacker, IDamageable
 {
+protected:
+	int energy; //shields/shieldsPower... values from 0 to 100
+	float maxSpeed;
+
 public:
 	Player()
 		: ImageObject("resources/image.png", Vector2(0.f, 0.f), Vector2(306.f, 562.f)) {
@@ -20,6 +25,9 @@ public:
 
 		_physics->SetLinearDrag(10.f);
 		_physics->SetAngularDrag(0.1f);
+
+		energy = 100;
+		maxSpeed = 1.0f;
 	}
 
 	void Update() override {

@@ -2,8 +2,10 @@
 #include "ImageObject.h"
 //#include "RenderManager.h"
 #include "Spawner.h"
+#include "IAttacker.h"
+#include "IDamageable.h"
 
-class Enemy : public ImageObject
+class Enemy : public ImageObject, IAttacker, IDamageable
 {
 private:
 	int health = 1;
@@ -19,7 +21,7 @@ public:
 		_physics->AddCollider(new AABB(_transform->position, _transform->size));
 	}
 
-	void Update() override {
+	virtual void Update() override {
 		MovingEnemy();
 		Object::Update();
 	}
