@@ -2,17 +2,38 @@
 #include "TextObject.h"
 #include "Scene.h"
 #include "TestObject.h"
+#include "Player.h"
 #include "Enemy.h"
 
-
+#include "Background.h"
+#include "Scroll.h"
 
 class Gameplay : public Scene {
+
+protected:
+	Scroll _scroll;
+
 public:
 	Gameplay() = default;
 
 	void OnEnter() override {
-		SPAWNER.SpawnObject(new TestObject());
+
+		Background* bg1 = new Background();
+		bg1->GetTransform()->position = { (float)RM->WINDOW_WIDTH, (float)RM->WINDOW_HEIGHT / 2.0f };
+		bg1->GetTransform()->size = { 1000.f, 1000.f };
+		Background* bg2 = new Background();
+		bg2->GetTransform()->position = { (float)RM->WINDOW_WIDTH / 3.0f, (float)RM->WINDOW_HEIGHT / 2.0f };
+		bg2->GetTransform()->size = { 1000.f, 1000.f };
+
+		SPAWNER.SpawnObject(bg1);
+		SPAWNER.SpawnObject(bg2);
+
+
+		SPAWNER.SpawnObject(new Player());
 		SPAWNER.SpawnObject(new Enemy());
+
+		
+
 
 		TextObject* text = new TextObject("UASINI");
 		text->GetTransform()->position = { 100.0f, 100.0f };
