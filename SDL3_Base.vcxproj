@@ -35,6 +35,9 @@
     <ClCompile Include="source\TextRenderer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="source\IAttacker.h" />
+    <ClInclude Include="source\IDamageable.h" />
+    <ClInclude Include="source\MedusaH.h" />
     <ClInclude Include="source\Player.h" />
     <ClInclude Include="source\AABB.h" />
     <ClInclude Include="source\Background.h" />
@@ -63,6 +66,7 @@
     <ClInclude Include="source\TextRenderer.h" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="resources\bebe.jpg" />
     <Image Include="resources\image.png" />
     <Image Include="resources\UmaSentimiento.jpg" />
   </ItemGroup>

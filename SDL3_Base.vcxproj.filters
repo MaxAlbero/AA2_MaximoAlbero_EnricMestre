@@ -137,12 +137,24 @@
     <ClInclude Include="source\Player.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="source\IAttacker.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="source\IDamageable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="source\MedusaH.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="resources\image.png">
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="resources\UmaSentimiento.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\bebe.jpg">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>
