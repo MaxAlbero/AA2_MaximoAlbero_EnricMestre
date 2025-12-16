@@ -3,9 +3,11 @@
 
 //#include "ImageObject.h"
 
+
+
 class MedusaH : public Enemy {
-protected:
-	int moveSpeed = 1;
+private:
+	int moveSpeed;
 
 public:
 	MedusaH()
@@ -16,6 +18,8 @@ public:
 		//_transform->size = Vector2(360.f, 360.f);
 		_transform->position = Vector2(RM->WINDOW_WIDTH / 2.f, RM->WINDOW_HEIGHT / 2.f);
 		_physics->AddCollider(new AABB(_transform->position, _transform->size));
+
+		moveSpeed = 1;
 	}
 
 	void Update() override {
@@ -25,5 +29,8 @@ public:
 	}
 
 	//void OnCollision(Object* other) override;
-	void EnemyBehaviour() override;
+	void EnemyBehaviour() override {
+		_physics->SetVelocity(Vector2(-moveSpeed, 0.f));
+
+	}
 };

@@ -19,7 +19,6 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="source\MedusaH.cpp" />
     <ClCompile Include="source\Player.cpp" />
     <ClCompile Include="source\AABB.cpp" />
     <ClCompile Include="source\Bullet.cpp" />
