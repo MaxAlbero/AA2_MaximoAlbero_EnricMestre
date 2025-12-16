@@ -9,7 +9,7 @@
 
 class Player : public ImageObject/*, IAttacker, IDamageable*/
 {
-protected:
+private:
 	int energy; //shields/shieldsPower... values from 0 to 100
 	float maxSpeed;
 
@@ -41,6 +41,7 @@ public:
 
 	void Shoot() {
 		Bullet* bullet = new Bullet(Vector2(_transform->position.x + 1, _transform->position.y));
+
 		SPAWNER.SpawnObject(bullet);
 	}
 };

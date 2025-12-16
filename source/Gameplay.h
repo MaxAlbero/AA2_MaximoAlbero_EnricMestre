@@ -5,6 +5,7 @@
 #include "Player.h"
 #include "Enemy.h"
 #include "MedusaH.h"
+#include "VerticalMedusa.h"
 
 #include "Background.h"
 #include "Scroll.h"
@@ -31,9 +32,9 @@ public:
 
 
 		SPAWNER.SpawnObject(new Player());
-		SPAWNER.SpawnObject(new Enemy());
+		//SPAWNER.SpawnObject(new Enemy());
 
-		SPAWNER.SpawnObject(new MedusaH());
+		SPAWNER.SpawnObject(new VerticalMedusa());
 
 
 		TextObject* text = new TextObject("UASINI");

@@ -15,11 +15,12 @@ enum MovementState {
 
 class Enemy : public ImageObject/*, IAttacker, IDamageable*/
 {
-private:
+protected:
 	int health = 50;
 	float radius = 100.f;
 	float angle = 0.f;
 	float angularSpeed = 0.01f;
+	MovementState currentState;
 public:
 	Enemy()
 		: ImageObject("resources/image.png", Vector2(0.f, 0.f), Vector2(306.f, 562.f))

@@ -22,7 +22,6 @@
     <ClCompile Include="source\Player.cpp" />
     <ClCompile Include="source\AABB.cpp" />
     <ClCompile Include="source\Bullet.cpp" />
-    <ClCompile Include="source\Button.cpp" />
     <ClCompile Include="source\Enemy.cpp" />
     <ClCompile Include="source\InputManager.cpp" />
     <ClCompile Include="source\ImageObject.cpp" />
@@ -64,6 +63,7 @@
     <ClInclude Include="source\Transform.h" />
     <ClInclude Include="source\Vector2.h" />
     <ClInclude Include="source\TextRenderer.h" />
+    <ClInclude Include="source\VerticalMedusa.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="resources\bebe.jpg" />
