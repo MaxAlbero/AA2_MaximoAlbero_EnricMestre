@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="source\MedusaH.cpp" />
     <ClCompile Include="source\Player.cpp" />
     <ClCompile Include="source\AABB.cpp" />
     <ClCompile Include="source\Bullet.cpp" />
@@ -66,6 +67,7 @@
     <ClInclude Include="source\TextRenderer.h" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="resources\bebe.jpg" />
     <Image Include="resources\image.png" />
     <Image Include="resources\UmaSentimiento.jpg" />
   </ItemGroup>

@@ -11,8 +11,10 @@ public:
 	Background()
 		: ImageObject("resources/UmaSentimiento.jpg", Vector2(0.f, 0.f), Vector2(680.f, 383.f)) {
 	
+		_transform->size = Vector2(RM->WINDOW_WIDTH, RM->WINDOW_HEIGHT);
 		_transform->position = Vector2(RM->WINDOW_WIDTH, RM->WINDOW_HEIGHT / 2.f);
 		//_transform->scale = Vector2(0.5f, 0.5f);
+		_physics->SetVelocity(Vector2(-5.f, 0.f));
 	}
 	
 	void Update() override {
@@ -22,11 +24,11 @@ public:
 	}
 
 	void ScrollBG() {
-		_physics->SetVelocity(Vector2(-5.f, 0.f));
 
-		if (_transform->position.x < 0.f) { //RM->WINDOW_WIDTH
+
+		if (_transform->position.x < -_transform->size.x / 2) { //RM->WINDOW_WIDTH
 			std::cout << "BYE BYE" << std::endl;
-			_transform->position.x = RM->WINDOW_WIDTH;
+			_transform->position.x = RM->WINDOW_WIDTH*1.5f;
 			
 		} 
 	}

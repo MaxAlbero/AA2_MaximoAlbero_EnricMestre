@@ -57,6 +57,9 @@
     <ClCompile Include="source\Player.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="source\MedusaH.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\Game.h">
@@ -152,6 +155,9 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="resources\UmaSentimiento.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\bebe.jpg">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

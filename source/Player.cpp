@@ -18,7 +18,7 @@ void Player::Move()
 		_physics->AddTorque(200.f);
 	}
 
-	if (IM->GetEvent(SDLK_SPACE, KeyState::DOWN)) {
+	if (IM->GetEvent(SDLK_SPACE, DOWN)) {
 		Shoot();
 	}
 	else if (IM->GetLeftClick()) {

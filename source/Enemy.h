@@ -27,6 +27,6 @@ public:
 	}
 
 	void OnCollision(Object* other) override;
-	void EnemyBehaviour();
+	virtual void EnemyBehaviour();
 };
 
