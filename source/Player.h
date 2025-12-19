@@ -40,8 +40,8 @@ public:
 	void Move();
 
 	void Shoot() {
-		Bullet* bullet = new Bullet(Vector2(_transform->position.x + 1, _transform->position.y));
+		//Bullet* bullet = new Bullet();
 
-		SPAWNER.SpawnObject(bullet);
+		SPAWNER.SpawnObject(new Bullet(Vector2(_transform->position.x + 1, _transform->position.y)));
 	}
 };

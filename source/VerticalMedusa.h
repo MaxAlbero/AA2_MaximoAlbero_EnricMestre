@@ -41,6 +41,7 @@ public:
 		}
 
 		if (_transform->position.y + _transform->size.y / 2 < 0) {
+			std::cout << "AAAAAAAAAAHHHHHHHHH" << std::endl;
 			Destroy();
 		}
 
@@ -51,7 +52,7 @@ public:
 		_physics->SetVelocity(Vector2(0.f, -moveSpeed));
 
 		if (_transform->position.y <= nextStopY) {
-			currentState = SIMPLE_MOVE;
+			currentState = STAY;
 			stopTimer = 0.f;
 			_physics->SetVelocity(Vector2(0.f, 0.f));
 		}
@@ -59,12 +60,15 @@ public:
 
 	//void OnCollision(Object* other) override;
 	void EnemyBehaviour() override {
+		std::cout << "VerticalMedusa Behaviour" << std::endl;
+
 		stopTimer += TM.GetDeltaTime();
 
 		if (stopTimer >= stopDuration) {
 			nextStopY -= stopDistance;
 
-			currentState = STAY;
+			currentState = SIMPLE_MOVE;
+			stopTimer = 0.f;
 		}
 	}
 };
