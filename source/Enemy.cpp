@@ -29,3 +29,17 @@ void Enemy::EnemyBehaviour() {
 
 	_transform->position = center + newPos;
 }
+
+void Enemy::Attack(IAttacker* other) const {
+	std::cout << "Enemy attacks!" << std::endl;
+}
+
+void Enemy::ReceiveDamage(int damageToAdd) {
+	health -= damageToAdd;
+	std::cout << "Enemy received " << damageToAdd << " damage. Health: " << health << std::endl;
+
+	if (health <= 0) {
+		// Destruir enemigo
+		Destroy();
+	}
+}

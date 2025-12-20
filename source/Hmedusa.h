@@ -5,12 +5,12 @@
 
 
 
-class MedusaH : public Enemy {
+class Hmedusa : public Enemy {
 private:
 	int moveSpeed;
 
 public:
-	MedusaH()
+	Hmedusa()
 		: Enemy ()
 	{
 		_renderer = new ImageRenderer(_transform, "resources/bebe.jpg", Vector2(0.f, 0.f), Vector2(360.f, 360.f));

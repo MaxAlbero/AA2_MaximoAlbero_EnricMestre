@@ -2,7 +2,7 @@
 #include "Enemy.h"
 #include "TimeManager.h"
 
-class VerticalMedusa : public Enemy {
+class Vmedusa : public Enemy {
 private:
 	float moveSpeed;
 	float stopDistance;
@@ -11,25 +11,25 @@ private:
 	float nextStopY;
 
 public:
-	VerticalMedusa()
+	Vmedusa(Vector2 spawnPosition)
 		: Enemy() {
 		_renderer = new ImageRenderer(_transform, "resources/bebe.jpg", Vector2(0.f, 0.f), Vector2(360.f, 360.f));
 
-		_transform->position = Vector2(RM->WINDOW_WIDTH / 2.f, RM->WINDOW_HEIGHT);
+		_transform->size = Vector2(100.f, 100.f);
+		_transform->position = spawnPosition;
 		_physics->AddCollider(new AABB(_transform->position, _transform->size));
 		
 		health = 20;
 		currentState = SIMPLE_MOVE;
-		moveSpeed = 1.f;
-
+		
+		moveSpeed = 100.f;
 		stopTimer = 0.f;
-		stopDuration = 1.0f;
-		stopDistance = 1.f;
-		nextStopY = _transform->position.y - stopDistance;
+		stopDuration = 1.f;
+		stopDistance = 150.f;
+		nextStopY = spawnPosition.y - stopDistance;
 	}
 
 	void Update() override {
-		EnemyBehaviour();
 
 		switch (currentState) {
 		case SIMPLE_MOVE:
@@ -39,6 +39,7 @@ public:
 			EnemyBehaviour();
 			break;
 		}
+
 
 		if (_transform->position.y + _transform->size.y / 2 < 0) {
 			std::cout << "AAAAAAAAAAHHHHHHHHH" << std::endl;
@@ -55,16 +56,25 @@ public:
 			currentState = STAY;
 			stopTimer = 0.f;
 			_physics->SetVelocity(Vector2(0.f, 0.f));
+
+			std::cout << "Medusa detenida en Y: " << _transform->position.y
+				<< ", Siguiente parada en: " << nextStopY << std::endl;
 		}
+
+
 	}
 
 	//void OnCollision(Object* other) override;
 	void EnemyBehaviour() override {
-		std::cout << "VerticalMedusa Behaviour" << std::endl;
+
 
 		stopTimer += TM.GetDeltaTime();
 
+		std::cout << TM.GetDeltaTime() << std::endl;
+
 		if (stopTimer >= stopDuration) {
+
+			std::cout << "VerticalMedusa Behaviour" << std::endl;
 			nextStopY -= stopDistance;
 
 			currentState = SIMPLE_MOVE;
