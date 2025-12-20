@@ -4,6 +4,7 @@
 #include "Spawner.h"
 #include "IAttacker.h"
 #include "IDamageable.h"
+#include "TimeManager.h"
 
 
 enum MovementState {
