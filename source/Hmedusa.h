@@ -1,13 +1,9 @@
 #pragma once
 #include "Enemy.h"
 
-//#include "ImageObject.h"
-
-
-
 class Hmedusa : public Enemy {
 private:
-	int moveSpeed;
+	float moveSpeed;
 
 public:
 	Hmedusa()
@@ -21,7 +17,7 @@ public:
 		_physics->AddCollider(new AABB(_transform->position, _transform->size));
 
 		health = 20;
-		moveSpeed = 1;
+		moveSpeed = 100.f;
 	}
 
 	void Update() override {

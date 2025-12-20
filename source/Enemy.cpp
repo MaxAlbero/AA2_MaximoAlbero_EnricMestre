@@ -7,12 +7,15 @@ void Enemy::OnCollision(Object* other)
 	Bullet* bullet = dynamic_cast<Bullet*>(other);
 	if (bullet != nullptr) {
 		health -= 10;
+
+		std::cout << "ENEMY HEALTH: " << health << std::endl;
+
 		if (health <= 0)
 		{
 			Destroy();
 			std::cout << "MUELTO DIAVLO" << std::endl;
 		}
-	}
+	}   
 }
 
 void Enemy::EnemyBehaviour() {

@@ -19,7 +19,7 @@ public:
 		_transform->position = spawnPosition;
 		_physics->AddCollider(new AABB(_transform->position, _transform->size));
 		
-		health = 20;
+		health = 200;
 		currentState = SIMPLE_MOVE;
 		
 		moveSpeed = 100.f;
@@ -57,8 +57,8 @@ public:
 			stopTimer = 0.f;
 			_physics->SetVelocity(Vector2(0.f, 0.f));
 
-			std::cout << "Medusa detenida en Y: " << _transform->position.y
-				<< ", Siguiente parada en: " << nextStopY << std::endl;
+			//std::cout << "Medusa detenida en Y: " << _transform->position.y
+			//	<< ", Siguiente parada en: " << nextStopY << std::endl;
 		}
 
 
@@ -70,11 +70,11 @@ public:
 
 		stopTimer += TM.GetDeltaTime();
 
-		std::cout << TM.GetDeltaTime() << std::endl;
+		//std::cout << TM.GetDeltaTime() << std::endl;
 
 		if (stopTimer >= stopDuration) {
 
-			std::cout << "VerticalMedusa Behaviour" << std::endl;
+			//std::cout << "VerticalMedusa Behaviour" << std::endl;
 			nextStopY -= stopDistance;
 
 			currentState = SIMPLE_MOVE;
