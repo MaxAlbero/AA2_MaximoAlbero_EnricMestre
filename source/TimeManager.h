@@ -39,7 +39,7 @@ public:
 	bool ShouldUpdateGame() const { return _deltaTime >= _frameTime; }
 
 	void ResetDeltaTime() {
-		_deltaTime -= - (float)(floor(_deltaTime / _frameTime) * _frameTime);
+		_deltaTime = _deltaTime - (float)(floor(_deltaTime / _frameTime) * _frameTime);
 	}
 
 	void Update() {

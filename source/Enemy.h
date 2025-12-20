@@ -13,20 +13,23 @@ enum MovementState {
 	CHASE
 };
 
-class Enemy : public ImageObject/*, IAttacker, IDamageable*/
+class Enemy : public ImageObject, public IAttacker, public IDamageable
 {
-private:
+protected:
 	int health = 50;
 	float radius = 100.f;
 	float angle = 0.f;
 	float angularSpeed = 0.01f;
+	MovementState currentState;
 public:
 	Enemy()
 		: ImageObject("resources/image.png", Vector2(0.f, 0.f), Vector2(306.f, 562.f))
 	{
 		_transform->size = Vector2(150.f, 150.f);
-		_transform->position = Vector2(RM->WINDOW_WIDTH / 1.f, RM->WINDOW_HEIGHT / 2.f);
+		//_transform->position = Vector2(RM->WINDOW_WIDTH / 1.f, RM->WINDOW_HEIGHT / 2.f);
 		_physics->AddCollider(new AABB(_transform->position, _transform->size));
+
+		currentState = STAY;
 	}
 
 	virtual void Update() override {
@@ -36,5 +39,9 @@ public:
 
 	void OnCollision(Object* other) override;
 	virtual void EnemyBehaviour();
+
+	//Interfaces para atacar y recibir daño
+	virtual void Attack(IAttacker* other) const override;
+	virtual void ReceiveDamage(int damageToAdd) override;
 };
 

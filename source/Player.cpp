@@ -2,23 +2,25 @@
 
 void Player::Move()
 {
-	if (IM->GetEvent(SDLK_S, KeyState::DOWN)) {
-		_physics->AddForce(Vector2(0.f, 20.f));
+	if (IM->GetEvent(SDLK_S, KeyState::HOLD)) {
+		_physics->AddForce(Vector2(0.f, 200.f));
 	}
-	if (IM->GetEvent(SDLK_W, KeyState::DOWN)) {
-		_physics->AddForce(Vector2(0.f, -20.f));
+	if (IM->GetEvent(SDLK_W, KeyState::HOLD)) {
+		_physics->AddForce(Vector2(0.f, -200.f));
 	}
-	if (IM->GetEvent(SDLK_A, KeyState::DOWN)) {
-		_physics->AddForce(Vector2(-20.f, 0.f));
+	if (IM->GetEvent(SDLK_A, KeyState::HOLD)) {
+		_physics->AddForce(Vector2(-200.f, 0.f));
 	}
-	if (IM->GetEvent(SDLK_D, KeyState::DOWN)) {
-		_physics->AddForce(Vector2(20.f, 0.f));
+	if (IM->GetEvent(SDLK_D, KeyState::HOLD)) {
+		_physics->AddForce(Vector2(200.f, 0.f));
 	}
-	if (IM->GetEvent(SDLK_R, KeyState::DOWN)) {
+	if (IM->GetEvent(SDLK_R, KeyState::HOLD)) {
 		_physics->AddTorque(200.f);
 	}
 
-	if (IM->GetEvent(SDLK_SPACE, DOWN)) {
+
+
+	if (IM->GetEvent(SDLK_SPACE, KeyState::DOWN)) {
 		Shoot();
 	}
 	else if (IM->GetLeftClick()) {
