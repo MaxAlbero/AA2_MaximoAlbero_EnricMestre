@@ -10,7 +10,8 @@ enum MovementState {
 	STAY,
 	SIMPLE_MOVE,
 	CIRCLE_MOVE,
-	CHASE
+	CHASE,
+	RETURN
 };
 
 class Enemy : public ImageObject, public IAttacker, public IDamageable
@@ -38,7 +39,10 @@ public:
 	}
 
 	void OnCollision(Object* other) override;
-	virtual void EnemyBehaviour();
+	virtual void EnemyBehaviour() {}
+	virtual void Move() {}
+	virtual void CircleMove();
+	virtual void GoAway() {}
 
 	//Interfaces para atacar y recibir daño
 	virtual void Attack(IAttacker* other) const override;

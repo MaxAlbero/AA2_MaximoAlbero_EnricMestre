@@ -41,7 +41,7 @@ public:
 		}
 
 
-		if (_transform->position.y + _transform->size.y / 2 < 0) {
+		if (_transform->position.y > RM->WINDOW_HEIGHT + _transform->size.y) {
 			std::cout << "AAAAAAAAAAHHHHHHHHH" << std::endl;
 			Destroy();
 		}
@@ -49,7 +49,7 @@ public:
 		Object::Update();
 	}
 
-	void Move() {
+	void Move() override {
 		_physics->SetVelocity(Vector2(0.f, -moveSpeed));
 
 		if (_transform->position.y <= nextStopY) {
