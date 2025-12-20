@@ -34,9 +34,10 @@
     <ClCompile Include="source\TextRenderer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="source\Bubbles.h" />
     <ClInclude Include="source\IAttacker.h" />
     <ClInclude Include="source\IDamageable.h" />
-    <ClInclude Include="source\MedusaH.h" />
+    <ClInclude Include="source\Hmedusa.h" />
     <ClInclude Include="source\Player.h" />
     <ClInclude Include="source\AABB.h" />
     <ClInclude Include="source\Background.h" />
@@ -63,7 +64,7 @@
     <ClInclude Include="source\Transform.h" />
     <ClInclude Include="source\Vector2.h" />
     <ClInclude Include="source\TextRenderer.h" />
-    <ClInclude Include="source\VerticalMedusa.h" />
+    <ClInclude Include="source\Vmedusa.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="resources\bebe.jpg" />

@@ -45,9 +45,6 @@
     <ClCompile Include="source\Bullet.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\Button.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="source\Enemy.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -143,7 +140,10 @@
     <ClInclude Include="source\IDamageable.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="source\MedusaH.h">
+    <ClInclude Include="source\Hmedusa.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Vmedusa.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

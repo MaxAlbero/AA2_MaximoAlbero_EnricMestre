@@ -11,7 +11,7 @@ public:
 	{
 		_transform->position = initPosition;
 		_transform->scale = Vector2(0.5f, 0.15f);
-		_physics->SetVelocity(Vector2(25.f, 0.f));
+		_physics->SetVelocity(Vector2(2000.f, 0.f));
 		_physics->AddCollider(new AABB(_transform->position, _transform->size));
 	}
 

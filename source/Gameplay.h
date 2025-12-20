@@ -6,6 +6,7 @@
 #include "Enemy.h"
 #include "Hmedusa.h"
 #include "Vmedusa.h"
+#include "Bubbles.h"
 
 #include "Background.h"
 #include "Scroll.h"
@@ -34,7 +35,9 @@ public:
 		SPAWNER.SpawnObject(new Player());
 		//SPAWNER.SpawnObject(new Enemy());
 
-		SPAWNER.SpawnObject(new Vmedusa(Vector2(RM->WINDOW_WIDTH / 2.f, RM->WINDOW_HEIGHT)));
+		//SPAWNER.SpawnObject(new Vmedusa(Vector2(RM->WINDOW_WIDTH / 2.f, RM->WINDOW_HEIGHT)));
+		SPAWNER.SpawnObject(new Bubbles(TOP_TO_BOTTOM)); //SALE DE LA PARTE ALTA DE LA PANTALLA Y LUEGO BAJA
+		SPAWNER.SpawnObject(new Bubbles(BOTTOM_TO_TOP)); //SALE DE LA PARTE BAJA DE LA PANTALLA Y LUEGO SUBE
 
 
 		TextObject* text = new TextObject("UASINI");
