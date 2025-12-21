@@ -31,11 +31,11 @@ public:
 		stopTimer = 0.f;
 		stopDuration = 1.f;
 
-		circleRadius = 10.f;      // Radio del círculo
+		circleRadius = 20.f;      // Radio del círculo
 		circleAngle = 0.f;
-		circleSpeed = 3.0f;        // Radianes por segundo (ajusta la velocidad)
+		circleSpeed = 10.0f;        // Radianes por segundo (ajusta la velocidad)
 		circleComplete = false;
-		horizontalMove = 100.f;
+		horizontalMove = 50.f;
 
 		circleCenter = spawnPos;
 	}
@@ -73,6 +73,7 @@ public:
 		float pi = 3.14159f;
 
 		// Incrementar el ángulo según deltaTime
+		circleCenter.x -= horizontalMove * TM.GetDeltaTime();
 		circleAngle += circleSpeed * TM.GetDeltaTime();
 
 		// Calcular nueva posición en el círculo
@@ -84,13 +85,7 @@ public:
 
 		// Verificar si completó el círculo (360 grados = 2*PI radianes)
 		if (circleAngle >= 2.0f * pi) {
-			
-			circleCenter.x -= horizontalMove;
-
 			circleAngle = 0.f;
-			
-			
 		}
 	}
-
 };
