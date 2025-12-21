@@ -60,8 +60,6 @@ public:
 			//std::cout << "Medusa detenida en Y: " << _transform->position.y
 			//	<< ", Siguiente parada en: " << nextStopY << std::endl;
 		}
-
-
 	}
 
 	//void OnCollision(Object* other) override;

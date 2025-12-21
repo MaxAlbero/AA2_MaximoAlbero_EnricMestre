@@ -33,6 +33,8 @@ public:
 		: Enemy() {
 		_renderer = new ImageRenderer(_transform, "resources/image.png", Vector2(0.f, 0.f), Vector2(306.f, 562.f));
 
+		_transform->size = Vector2(100.f, 100.f);
+
 		direction = dir;
 
 		if (dir == TOP_TO_BOTTOM) {
