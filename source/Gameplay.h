@@ -43,9 +43,19 @@ public:
 		//SPAWNER.SpawnObject(new Bubbles(TOP_TO_BOTTOM)); //SALE DE LA PARTE ALTA DE LA PANTALLA Y LUEGO BAJA
 		//SPAWNER.SpawnObject(new Bubbles(BOTTOM_TO_TOP)); //SALE DE LA PARTE BAJA DE LA PANTALLA Y LUEGO SUBE
 
-		Circler* circler = new Circler();
-		SPAWNER.SpawnObject(circler);
-		SPAWNER.SpawnObject(new CirclerBody(circler));
+
+		// Cabeza del Circler
+		Circler* head = new Circler();
+		// Segmentos del cuerpo
+		CirclerBody* body1 = new CirclerBody(head, 120.f);       // Primer segmento
+		CirclerBody* body2 = new CirclerBody(body1, 120.f);      // Segundo segmento sigue al primero
+		CirclerBody* body3 = new CirclerBody(body2, 120.f);      // Tercer segmento sigue al segundo
+		                  
+		// Añadir todos a la escena
+		SPAWNER.SpawnObject(head);
+		SPAWNER.SpawnObject(body1);
+		SPAWNER.SpawnObject(body2);
+		SPAWNER.SpawnObject(body3);
 
 		TextObject* text = new TextObject("UASINI");
 		text->GetTransform()->position = { 100.0f, 100.0f };

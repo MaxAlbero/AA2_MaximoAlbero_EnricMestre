@@ -11,7 +11,7 @@ public:
 	CirclerBody(Enemy* leaderEnemy, float distance = 120.f)
 		: Enemy(), leader(leaderEnemy), offsetDistance(distance) {
 		_renderer = new ImageRenderer(_transform, "resources/image.png", Vector2(0.f, 0.f), Vector2(306.f, 562.f));
-		_transform->size = Vector2(100.f, 100.f);
+		_transform->size = Vector2(80.f, 80.f);
 
 		if (leader) {
 			_transform->position = leader->GetTransform()->position;
