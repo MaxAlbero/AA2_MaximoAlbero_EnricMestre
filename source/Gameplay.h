@@ -8,6 +8,7 @@
 #include "Vmedusa.h"
 #include "Bubbles.h"
 #include "Chomper.h"
+#include "KillerWhale.h"
 
 #include "Background.h"
 #include "Scroll.h"
@@ -40,7 +41,8 @@ public:
 		//SPAWNER.SpawnObject(new Bubbles(TOP_TO_BOTTOM)); //SALE DE LA PARTE ALTA DE LA PANTALLA Y LUEGO BAJA
 		//SPAWNER.SpawnObject(new Bubbles(BOTTOM_TO_TOP)); //SALE DE LA PARTE BAJA DE LA PANTALLA Y LUEGO SUBE
 
-		SPAWNER.SpawnObject(new Chomper(Vector2(RM->WINDOW_WIDTH / 1.f, RM->WINDOW_HEIGHT / 2.f)));
+		//SPAWNER.SpawnObject(new Chomper(Vector2(RM->WINDOW_WIDTH / 1.f, RM->WINDOW_HEIGHT / 2.f)));
+		SPAWNER.SpawnObject(new KillerWhale());
 
 		TextObject* text = new TextObject("UASINI");
 		text->GetTransform()->position = { 100.0f, 100.0f };
