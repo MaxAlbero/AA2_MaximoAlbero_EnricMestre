@@ -3,8 +3,6 @@
 
 class Chomper : public Enemy {
 private:
-	float moveSpeed;
-
 	Vector2 circleCenter;
 	float circleRadius;
 	float circleAngle;
@@ -27,13 +25,12 @@ public:
 		health = 200;
 		currentState = STAY;
 
-		//moveSpeed = 10.f;
 		stopTimer = 0.f;
 		stopDuration = 1.f;
 
-		circleRadius = 20.f;      // Radio del círculo
+		circleRadius = 20.f;
 		circleAngle = 0.f;
-		circleSpeed = 10.0f;        // Radianes por segundo (ajusta la velocidad)
+		circleSpeed = 10.0f;
 		circleComplete = false;
 		horizontalMove = 50.f;
 
@@ -72,18 +69,16 @@ public:
 	void CircleMove() override {
 		float pi = 3.14159f;
 
-		// Incrementar el ángulo según deltaTime
 		circleCenter.x -= horizontalMove * TM.GetDeltaTime();
 		circleAngle += circleSpeed * TM.GetDeltaTime();
 
-		// Calcular nueva posición en el círculo
 		float newX = circleCenter.x + circleRadius * cos(circleAngle);
 		float newY = circleCenter.y + circleRadius * sin(circleAngle);
 
 		// Mover a la nueva posición
 		_transform->position = Vector2(newX, newY);
 
-		// Verificar si completó el círculo (360 grados = 2*PI radianes)
+		// Verificar si el chomper ha completado una vuelta completa
 		if (circleAngle >= 2.0f * pi) {
 			circleAngle = 0.f;
 		}
