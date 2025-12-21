@@ -8,6 +8,7 @@
 #include "Vmedusa.h"
 #include "Bubbles.h"
 #include "Circler.h"
+#include "CirclerBody.h"
 
 #include "Background.h"
 #include "Scroll.h"
@@ -42,7 +43,9 @@ public:
 		//SPAWNER.SpawnObject(new Bubbles(TOP_TO_BOTTOM)); //SALE DE LA PARTE ALTA DE LA PANTALLA Y LUEGO BAJA
 		//SPAWNER.SpawnObject(new Bubbles(BOTTOM_TO_TOP)); //SALE DE LA PARTE BAJA DE LA PANTALLA Y LUEGO SUBE
 
-		SPAWNER.SpawnObject(new Circler());
+		Circler* circler = new Circler();
+		SPAWNER.SpawnObject(circler);
+		SPAWNER.SpawnObject(new CirclerBody(circler));
 
 		TextObject* text = new TextObject("UASINI");
 		text->GetTransform()->position = { 100.0f, 100.0f };
