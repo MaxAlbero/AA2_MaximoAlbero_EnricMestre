@@ -40,6 +40,8 @@ public:
 
 	void Move();
 
+	void OnCollision(Object* other) override;
+
 	void Shoot(IDamageable* other) const override {
 		//Bullet* bullet = new Bullet();
 

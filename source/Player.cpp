@@ -27,3 +27,8 @@ void Player::Move()
 		Shoot();
 	}
 }
+
+void Player::OnCollision(Object* other)
+{
+
+}
