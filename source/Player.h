@@ -7,7 +7,7 @@
 #include "IAttacker.h"
 #include "IDamageable.h"
 
-class Player : public ImageObject/*, IAttacker, IDamageable*/
+class Player : public ImageObject, public IAttacker, public IDamageable
 {
 private:
 	int energy; //shields/shieldsPower... values from 0 to 100
@@ -28,6 +28,7 @@ public:
 
 		energy = 100;
 		maxSpeed = 1.0f;
+		bulletDamage = 10;
 	}
 
 	void Update() override {
@@ -39,9 +40,13 @@ public:
 
 	void Move();
 
-	void Shoot() {
+	void Shoot(IDamageable* other) const override {
 		//Bullet* bullet = new Bullet();
 
 		SPAWNER.SpawnObject(new Bullet(Vector2(_transform->position.x + 1, _transform->position.y)));
+
+		other->ReceiveDamage(bulletDamage);
 	}
+
+	void ReceiveDamage(int damageToAdd) override;
 };
