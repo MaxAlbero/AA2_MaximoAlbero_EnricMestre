@@ -11,6 +11,7 @@
 #include "Circler.h"
 #include "CirclerBody.h"
 #include "Beholder.h"
+#include "BioTitan.h"
 
 #include "Background.h"
 #include "Scroll.h"
@@ -43,7 +44,7 @@ public:
 		//SPAWNER.SpawnObject(new Bubbles(TOP_TO_BOTTOM)); //SALE DE LA PARTE ALTA DE LA PANTALLA Y LUEGO BAJA
 		//SPAWNER.SpawnObject(new Bubbles(BOTTOM_TO_TOP)); //SALE DE LA PARTE BAJA DE LA PANTALLA Y LUEGO SUBE
 
-		SPAWNER.SpawnObject(new Chomper(Vector2(RM->WINDOW_WIDTH / 1.f, RM->WINDOW_HEIGHT / 2.f)));
+		//SPAWNER.SpawnObject(new Chomper(Vector2(RM->WINDOW_WIDTH / 1.f, RM->WINDOW_HEIGHT / 2.f)));
 		//SPAWNER.SpawnObject(new Hmedusa());
 
 		//SPAWNER.SpawnObject(new Vmedusa(Vector2(RM->WINDOW_WIDTH / 2.f, RM->WINDOW_HEIGHT)));
@@ -52,20 +53,22 @@ public:
 
 
 		// Cabeza del Circler
-		Circler* head = new Circler();
-		// Segmentos del cuerpo
-		CirclerBody* body1 = new CirclerBody(head, 120.f);       // Primer segmento
-		CirclerBody* body2 = new CirclerBody(body1, 120.f);      // Segundo segmento sigue al primero
-		CirclerBody* body3 = new CirclerBody(body2, 120.f);      // Tercer segmento sigue al segundo
-		                  
-		// A�adir todos a la escena
-		SPAWNER.SpawnObject(head);
-		SPAWNER.SpawnObject(body1);
-		SPAWNER.SpawnObject(body2);
-		SPAWNER.SpawnObject(body3);
-		//SPAWNER.SpawnObject(new Chomper(Vector2(RM->WINDOW_WIDTH / 1.f, RM->WINDOW_HEIGHT / 2.f)));
+		//Circler* head = new Circler();
+		//// Segmentos del cuerpo
+		//CirclerBody* body1 = new CirclerBody(head, 120.f);       // Primer segmento
+		//CirclerBody* body2 = new CirclerBody(body1, 120.f);      // Segundo segmento sigue al primero
+		//CirclerBody* body3 = new CirclerBody(body2, 120.f);      // Tercer segmento sigue al segundo
+		//                  
+		//// Añadir todos a la escena
+		//SPAWNER.SpawnObject(head);
+		//SPAWNER.SpawnObject(body1);
+		//SPAWNER.SpawnObject(body2);
+		//SPAWNER.SpawnObject(body3);
+		////SPAWNER.SpawnObject(new Chomper(Vector2(RM->WINDOW_WIDTH / 1.f, RM->WINDOW_HEIGHT / 2.f)));
 
-		SPAWNER.SpawnObject(new Beholder(Vector2(100.f,100.f), player));
+		//SPAWNER.SpawnObject(new Beholder(Vector2(100.f,100.f), player));
+
+		SPAWNER.SpawnObject(new BioTitan);
 
 		TextObject* text = new TextObject("UASINI");
 		text->GetTransform()->position = { 100.0f, 100.0f };

@@ -1,11 +1,8 @@
 #pragma once
 #include "ImageObject.h"
-//#include "RenderManager.h"
 #include "Spawner.h"
 #include "IAttacker.h"
 #include "IDamageable.h"
-#include "TimeManager.h"
-
 #include "TimeManager.h"
 
 enum MovementState {
@@ -13,13 +10,14 @@ enum MovementState {
 	SIMPLE_MOVE,
 	CIRCLE_MOVE,
 	CHASE,
+	SHOOT,
 	RETURN
 };
 
 class Enemy : public ImageObject, public IAttacker, public IDamageable
 {
 protected:
-	int health = 50;
+	int enemyHealth = 50;
 	float radius = 100.f;
 	float angle = 0.f;
 	float angularSpeed = 0.01f;

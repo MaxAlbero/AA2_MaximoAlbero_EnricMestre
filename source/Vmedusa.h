@@ -19,7 +19,7 @@ public:
 		_transform->position = spawnPosition;
 		_physics->AddCollider(new AABB(_transform->position, _transform->size));
 		
-		health = 200;
+		enemyHealth = 200;
 		currentState = SIMPLE_MOVE;
 		
 		moveSpeed = 100.f;

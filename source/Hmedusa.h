@@ -16,7 +16,7 @@ public:
 		_transform->position = spawnPos; //<-- Vector2(RM->WINDOW_WIDTH + _transform->size.x, RM->WINDOW_HEIGHT / 2.f);
 		_physics->AddCollider(new AABB(_transform->position, _transform->size));
 
-		health = 20;
+		enemyHealth = 20;
 		moveSpeed = 100.f;
 	}
 

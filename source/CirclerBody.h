@@ -19,7 +19,7 @@ public:
 		}
 
 		_physics->AddCollider(new AABB(_transform->position, _transform->size));
-		health = 999999;
+		enemyHealth = 999999;
 		currentState = STAY;
 	}
 

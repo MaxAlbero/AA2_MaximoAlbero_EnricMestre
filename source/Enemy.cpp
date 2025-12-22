@@ -6,11 +6,11 @@ void Enemy::OnCollision(Object* other)
 {
 	Bullet* bullet = dynamic_cast<Bullet*>(other);
 	if (bullet != nullptr) {
-		health -= 10;
+		enemyHealth -= 10;
 
-		std::cout << "ENEMY HEALTH: " << health << std::endl;
+		std::cout << "ENEMY HEALTH: " << enemyHealth << std::endl;
 
-		if (health <= 0)
+		if (enemyHealth <= 0)
 		{
 			Destroy();
 			std::cout << "MUELTO DIAVLO" << std::endl;
@@ -23,10 +23,10 @@ void Enemy::Attack(IAttacker* other) const {
 }
 
 void Enemy::ReceiveDamage(int damageToAdd) {
-	health -= damageToAdd;
-	std::cout << "Enemy received " << damageToAdd << " damage. Health: " << health << std::endl;
+	enemyHealth -= damageToAdd;
+	std::cout << "Enemy received " << damageToAdd << " damage. Health: " << enemyHealth << std::endl;
 
-	if (health <= 0) {
+	if (enemyHealth <= 0) {
 		// Destruir enemigo
 		Destroy();
 	}
