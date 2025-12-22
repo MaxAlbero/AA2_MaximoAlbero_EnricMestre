@@ -15,6 +15,8 @@ private:
 
 	int numOfChase;
 	int maxChases;
+	Vector2 escapeDirection;
+	bool escapeDirectionSet;
 
 public:
 	Beholder(Vector2 spawnPos, Player* playerRef)
@@ -29,7 +31,7 @@ public:
 
 		health = 100;
 		currentState = STAY;
-		moveSpeed = 100.f;
+		moveSpeed = 200.f;
 
 		stopDuration = 1.5f;
 		stopTimer = 0.f;
@@ -38,6 +40,7 @@ public:
 
 		numOfChase = 0;
 		maxChases = 3;
+		escapeDirectionSet = false;
 
 		if (player) {
 			targetPosition = player->GetTransform()->position;
@@ -73,6 +76,9 @@ public:
 
 		if (numOfChase >= maxChases) {
 			currentState = RETURN;
+			escapeDirectionSet = false;
+			std::cout << "Beholder intentando escapar..." << std::endl;
+			return;
 		}
 
 		stopTimer += TM.GetDeltaTime();
@@ -104,7 +110,35 @@ public:
 	}
 
 	void GoAway() override {
+		if (!escapeDirectionSet) {
+			Vector2 currentPos = _transform->position;
 
+			float distLeft = currentPos.x;
+			float distRight = RM->WINDOW_WIDTH - currentPos.x;
+			float distTop = currentPos.y;
+			float distBottom = RM->WINDOW_HEIGHT - currentPos.y;
+
+			float minDist = distLeft;
+			escapeDirection = Vector2(-1.f, 0.f);  // Izquierda
+
+			if (distRight < minDist) {
+				minDist = distRight;
+				escapeDirection = Vector2(1.f, 0.f);  // Derecha
+			}
+			if (distTop < minDist) {
+				minDist = distTop;
+				escapeDirection = Vector2(0.f, -1.f);  // Arriba
+			}
+			if (distBottom < minDist) {
+				minDist = distBottom;
+				escapeDirection = Vector2(0.f, 1.f);  // Abajo
+			}
+
+			escapeDirectionSet = true;
+			std::cout << "Beholder escapa hacia el borde más cercano" << std::endl;
+		}
+		
+		_physics->SetVelocity(Vector2(escapeDirection.x * moveSpeed, escapeDirection.y * moveSpeed));
 	}
 
 
