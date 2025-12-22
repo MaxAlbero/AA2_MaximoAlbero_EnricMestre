@@ -10,6 +10,7 @@
 #include "Chomper.h"
 #include "Circler.h"
 #include "CirclerBody.h"
+#include "Beholder.h"
 
 #include "Background.h"
 #include "Scroll.h"
@@ -34,8 +35,8 @@ public:
 		SPAWNER.SpawnObject(bg1);
 		SPAWNER.SpawnObject(bg2);
 
-
-		SPAWNER.SpawnObject(new Player());
+		Player* player = new Player();
+		SPAWNER.SpawnObject(player);
 		//SPAWNER.SpawnObject(new Enemy());
 
 		//SPAWNER.SpawnObject(new Vmedusa(Vector2(RM->WINDOW_WIDTH / 2.f, RM->WINDOW_HEIGHT)));
@@ -62,6 +63,9 @@ public:
 		SPAWNER.SpawnObject(body1);
 		SPAWNER.SpawnObject(body2);
 		SPAWNER.SpawnObject(body3);
+		//SPAWNER.SpawnObject(new Chomper(Vector2(RM->WINDOW_WIDTH / 1.f, RM->WINDOW_HEIGHT / 2.f)));
+
+		SPAWNER.SpawnObject(new Beholder(Vector2(100.f,100.f), player));
 
 		TextObject* text = new TextObject("UASINI");
 		text->GetTransform()->position = { 100.0f, 100.0f };
