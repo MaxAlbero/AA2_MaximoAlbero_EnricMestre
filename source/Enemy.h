@@ -6,6 +6,7 @@
 #include "IDamageable.h"
 #include "TimeManager.h"
 
+#include "TimeManager.h"
 
 enum MovementState {
 	STAY,
@@ -23,6 +24,8 @@ protected:
 	float angle = 0.f;
 	float angularSpeed = 0.01f;
 	MovementState currentState;
+	bool isDestroyed = false;
+
 public:
 	Enemy()
 		: ImageObject("resources/image.png", Vector2(0.f, 0.f), Vector2(306.f, 562.f))
@@ -48,5 +51,12 @@ public:
 	//Interfaces para atacar y recibir daño
 	virtual void Attack(IAttacker* other) const override;
 	virtual void ReceiveDamage(int damageToAdd) override;
+
+	bool IsDestroyed() const { return isDestroyed; }
+
+	void Destroy() {
+		isDestroyed = true;
+		Object::Destroy();
+	}
 };
 
