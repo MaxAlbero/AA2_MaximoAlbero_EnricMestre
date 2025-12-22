@@ -28,7 +28,7 @@ public:
 		health = 1000;
 		currentState = SIMPLE_MOVE;
 
-		circleRadius = 200.f;
+		circleRadius = 300.f;
 		circleAngle = 0.f;
 		circleSpeed = 3.0f;
 		circleComplete = false;
@@ -92,6 +92,7 @@ public:
 
 			// Resetear al ángulo inicial (punto alto)
 			circleAngle = startAngle;
+			circleRadius -= 50.f;
 
 			if (circleCount >= maxCircles) {
 				currentState = RETURN;
