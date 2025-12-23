@@ -41,7 +41,7 @@ public:
 		}
 
 
-		if (_transform->position.y > RM->WINDOW_HEIGHT + _transform->size.y) {
+		if (_transform->position.y + _transform->size.y < 0.f) {
 			std::cout << "AAAAAAAAAAHHHHHHHHH" << std::endl;
 			Destroy();
 		}

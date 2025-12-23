@@ -118,7 +118,12 @@ public:
 		for (int i = 0; i < count; i++) {
 
 			float positionX = rand() % RM->WINDOW_WIDTH;
-			SPAWNER.SpawnObject(new Vmedusa(Vector2(positionX, RM->WINDOW_HEIGHT + 50.f)));
+
+			Vmedusa* medusa = new Vmedusa(Vector2(positionX, RM->WINDOW_HEIGHT + 50.f));
+
+			SPAWNER.SpawnObject(medusa);
+			WM->SetEnemy(medusa);
+
 		}
 	}
 
@@ -127,7 +132,12 @@ public:
 
 			int speed = rand() % 400 + 100;
 			float positionY = rand() % RM->WINDOW_HEIGHT;
-			SPAWNER.SpawnObject(new Hmedusa(Vector2(RM->WINDOW_WIDTH + 50.f, positionY), speed));
+
+			Hmedusa* medusa = new Hmedusa(Vector2(RM->WINDOW_WIDTH + 50.f, positionY), speed);
+
+			SPAWNER.SpawnObject(medusa);
+			WM->SetEnemy(medusa);
+
 		}
 	}
 
@@ -142,22 +152,25 @@ public:
 		for (int i = 0; i < count; i++) {
 			Vector2 spawnPos;
 
-			switch (i) {
-			case 0: // Esquina superior izquierda
+			switch (i % 4) {
+			case 0:
 				spawnPos = Vector2(margin, margin);
 				break;
-			case 1: // Esquina superior derecha
+			case 1:
 				spawnPos = Vector2(RM->WINDOW_WIDTH - margin, margin);
 				break;
-			case 2: // Esquina inferior derecha
+			case 2:
 				spawnPos = Vector2(RM->WINDOW_WIDTH - margin, RM->WINDOW_HEIGHT - margin);
 				break;
-			case 3: // Esquina inferior izquierda
+			case 3:
 				spawnPos = Vector2(margin, RM->WINDOW_HEIGHT - margin);
 				break;
 			}
 
-			SPAWNER.SpawnObject(new Beholder(spawnPos, playerRef));
+			Beholder* beholder = new Beholder(spawnPos, playerRef);
+			SPAWNER.SpawnObject(beholder);
+			WM->SetEnemy(beholder);
+
 		}
 	}
 
