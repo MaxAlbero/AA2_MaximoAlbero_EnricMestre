@@ -12,9 +12,10 @@ void SpawnerManager::CheckCurrentWave()
 				waveEnemies.erase(waveEnemies.begin() + i);
 			}
 		}
-		if (waveEnemies.size() == 1) {
-			spawnPowerUp = waveEnemies[0]->GetTransform()->position;
-		}
+		//if (waveEnemies.size() == 1) {
+		//	spawnPowerUp = waveEnemies[0]->GetTransform()->position;
+		//}
+
 		if (waveEnemies.empty()) {
 			SpawnPowerUp();
 			_waveActive = false;

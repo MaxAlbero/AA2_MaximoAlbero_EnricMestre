@@ -1,7 +1,6 @@
 #pragma once
 #include "InputManager.h"
 #include "Spawner.h"
-
 #include "SpawnerManager.h"
 
 #include "Hmedusa.h"
@@ -12,36 +11,44 @@
 #include "CirclerBody.h"
 #include "Beholder.h"
 #include "KillerWhale.h"
+#include "BioTitan.h"
 
 class SpawnWaves {
 private:
-	int currentWave = -1;
+	int currentWave = 0;
 	int maxWaves = 8;
 	float offsetCircler = 30.f;
 	float offsetChomper = 50.f;
 
 	float spawnTimer;
-	float delaySpawnDuration = 1.0f;
+	float delaySpawnDuration = 2.0f;
 	std::vector<int> waveOrder;
 	std::vector<int> amountEnemies;
 
 	Player* playerRef;
+
+	bool waitingForWaveClear;
+	bool bossSpawned;
 
 	void SetMaxWaves() {
 		maxWaves = waveOrder.size();
 	}
 
 	void WaitForNextWave() {
-		spawnTimer += TM.GetDeltaTime();
-		if (spawnTimer >= delaySpawnDuration) {
-			if (currentWave < maxWaves - 1) {
-				currentWave++;
-				spawnTimer = 0.f;
-				WM->SetWaveActive(true);
-				WM->SetNextWave(true);
-			}
-			else {
-				SpawnBioTitan();
+		if (!WM->GetWaveActive()) {
+			spawnTimer += TM.GetDeltaTime();
+			if (spawnTimer >= delaySpawnDuration) {
+				if (currentWave < maxWaves - 1) {
+					currentWave++;
+					spawnTimer = 0.f;
+					WM->SetWaveActive(true);
+					WM->SetNextWave(true);
+				}
+				else if(!bossSpawned) {
+					SpawnBioTitan();
+					bossSpawned = true;
+					spawnTimer = 0.f;
+				}
 			}
 		}
 	}
@@ -61,6 +68,9 @@ public:
 
 	void Start() {
 		SetMaxWaves();
+		WM->SetWaveActive(true);
+		WM->SetNextWave(true);
+		bossSpawned = false;
 	}
 
 	void Update() {
@@ -110,7 +120,6 @@ public:
 			float positionX = rand() % RM->WINDOW_WIDTH;
 			SPAWNER.SpawnObject(new Vmedusa(Vector2(positionX, RM->WINDOW_HEIGHT + 50.f)));
 		}
-
 	}
 
 	void SpawnHMedusa(int count) {
@@ -203,9 +212,13 @@ public:
 		}
 	}
 
-	void SpawnAmoeba(int count) {}
-	void SpawnBioTitan() {
-		
+	void SpawnAmoeba(int count) {
+			
+	}
 
+	void SpawnBioTitan() {
+		BioTitan* boss = new BioTitan();
+		SPAWNER.SpawnObject(boss);
+		WM->SetEnemy(boss);
 	}
 };
