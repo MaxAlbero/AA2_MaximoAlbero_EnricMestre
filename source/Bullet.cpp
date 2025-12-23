@@ -2,5 +2,5 @@
 
 void Bullet::OnCollision(Object* other)
 {
-	Destroy();
+	//Destroy();
 }
