@@ -147,24 +147,6 @@ public:
 			case 3: // Esquina inferior izquierda
 				spawnPos = Vector2(margin, RM->WINDOW_HEIGHT - margin);
 				break;
-			default: // Para más de 4, distribuir en otras posiciones
-				// Alterna entre las esquinas de nuevo
-				int corner = i % 4;
-				switch (corner) {
-				case 0:
-					spawnPos = Vector2(margin, margin);
-					break;
-				case 1:
-					spawnPos = Vector2(RM->WINDOW_WIDTH - margin, margin);
-					break;
-				case 2:
-					spawnPos = Vector2(RM->WINDOW_WIDTH - margin, RM->WINDOW_HEIGHT - margin);
-					break;
-				case 3:
-					spawnPos = Vector2(margin, RM->WINDOW_HEIGHT - margin);
-					break;
-				}
-				break;
 			}
 
 			SPAWNER.SpawnObject(new Beholder(spawnPos, playerRef));
