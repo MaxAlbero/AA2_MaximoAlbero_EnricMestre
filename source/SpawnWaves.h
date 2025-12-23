@@ -16,7 +16,7 @@
 class SpawnWaves {
 private:
 	int currentWave = -1;
-	int maxWaves = 7;
+	int maxWaves = 8;
 	float offsetCircler = 30.f;
 	float offsetChomper = 50.f;
 
@@ -24,6 +24,8 @@ private:
 	float delaySpawnDuration = 1.0f;
 	std::vector<int> waveOrder;
 	std::vector<int> amountEnemies;
+
+	Player* playerRef;
 
 	void SetMaxWaves() {
 		maxWaves = waveOrder.size();
@@ -51,6 +53,10 @@ public:
 
 	std::vector<int>& GetAmountEnemies() {
 		return amountEnemies;
+	}
+
+	void SetPlayer(Player* player) {
+		playerRef = player;
 	}
 
 	void Start() {
@@ -99,24 +105,73 @@ public:
 	}
 
 	void SpawnVMedusa(int count) {
-	
+		for (int i = 0; i < count; i++) {
+
+			int speed = rand() % 400 + 100;
+			float positionX = rand() % RM->WINDOW_WIDTH;
+			SPAWNER.SpawnObject(new Hmedusa(Vector2(positionX, RM->WINDOW_HEIGHT + 50.f), speed));
+		}
 
 	}
 
 	void SpawnHMedusa(int count) {
 		for (int i = 0; i < count; i++) {
 
-			float speed = rand() % 400 + 100;
+			int speed = rand() % 400 + 100;
 			float positionY = rand() % RM->WINDOW_HEIGHT;
-			SPAWNER.SpawnObject(new Hmedusa(Vector2(RM->WINDOW_WIDTH + 50.f, positionY)));
+			SPAWNER.SpawnObject(new Hmedusa(Vector2(RM->WINDOW_WIDTH + 50.f, positionY), speed));
 		}
 	}
 
 	void SpawnBeholder(int count) {
-		//for (int i = 1; i < 3; i++) {
-		//	SPAWNER.SpawnObject(new Beholder(Vector2(RM->WINDOW_WIDTH - 50 * 1, RM->WINDOW_HEIGHT - 20)));
-		//}
+		if (playerRef == nullptr) {
+			std::cout << "Error: Player reference is null!" << std::endl;
+			return;
+		}
+
+		float margin = 80.f; // Distancia del borde
+
+		for (int i = 0; i < count; i++) {
+			Vector2 spawnPos;
+
+			switch (i) {
+			case 0: // Esquina superior izquierda
+				spawnPos = Vector2(margin, margin);
+				break;
+			case 1: // Esquina superior derecha
+				spawnPos = Vector2(RM->WINDOW_WIDTH - margin, margin);
+				break;
+			case 2: // Esquina inferior derecha
+				spawnPos = Vector2(RM->WINDOW_WIDTH - margin, RM->WINDOW_HEIGHT - margin);
+				break;
+			case 3: // Esquina inferior izquierda
+				spawnPos = Vector2(margin, RM->WINDOW_HEIGHT - margin);
+				break;
+			default: // Para más de 4, distribuir en otras posiciones
+				// Alterna entre las esquinas de nuevo
+				int corner = i % 4;
+				switch (corner) {
+				case 0:
+					spawnPos = Vector2(margin, margin);
+					break;
+				case 1:
+					spawnPos = Vector2(RM->WINDOW_WIDTH - margin, margin);
+					break;
+				case 2:
+					spawnPos = Vector2(RM->WINDOW_WIDTH - margin, RM->WINDOW_HEIGHT - margin);
+					break;
+				case 3:
+					spawnPos = Vector2(margin, RM->WINDOW_HEIGHT - margin);
+					break;
+				}
+				break;
+			}
+
+			SPAWNER.SpawnObject(new Beholder(spawnPos, playerRef));
+		}
 	}
+
+
 	void SpawnChomper(int count) {
 		for (int i = 0; i < count; i++)
 		{
