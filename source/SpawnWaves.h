@@ -107,9 +107,8 @@ public:
 	void SpawnVMedusa(int count) {
 		for (int i = 0; i < count; i++) {
 
-			int speed = rand() % 400 + 100;
 			float positionX = rand() % RM->WINDOW_WIDTH;
-			SPAWNER.SpawnObject(new Hmedusa(Vector2(positionX, RM->WINDOW_HEIGHT + 50.f), speed));
+			SPAWNER.SpawnObject(new Vmedusa(Vector2(positionX, RM->WINDOW_HEIGHT + 50.f)));
 		}
 
 	}
