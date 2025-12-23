@@ -28,6 +28,7 @@ public:
 
 		energy = 100;
 		maxSpeed = 1.0f;
+		_physics->AddCollider(new AABB(_transform->position, _transform->size));
 	}
 
 	void Update() override {

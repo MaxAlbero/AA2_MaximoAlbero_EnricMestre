@@ -7,6 +7,7 @@ private:
 	Vector2 startPoint;
 	Vector2 endPoint;
 	bool hasDetached;
+	int health;
 
 public:
 	KillerWhale(bool startAtTop = false)
