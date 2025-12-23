@@ -4,27 +4,20 @@
 #include "TestObject.h"
 #include "Player.h"
 #include "Enemy.h"
-#include "Hmedusa.h"
-#include "Vmedusa.h"
-#include "Bubbles.h"
-#include "Chomper.h"
-#include "Circler.h"
-#include "CirclerBody.h"
-#include "Beholder.h"
-#include "KillerWhale.h"
+
+#include "SpawnWaves.h"
 
 #include "Background.h"
 #include "Scroll.h"
 
 class Gameplay : public Scene {
-
-protected:
-	Scroll _scroll;
-
 public:
+	SpawnWaves* waves;
 	Gameplay() = default;
 
 	void OnEnter() override {
+
+		waves = new SpawnWaves();
 
 		Background* bg1 = new Background();
 		//bg1->GetTransform()->position = { (float)RM->WINDOW_WIDTH, (float)RM->WINDOW_HEIGHT / 2.0f };
@@ -44,31 +37,31 @@ public:
 		//SPAWNER.SpawnObject(new Bubbles(TOP_TO_BOTTOM)); //SALE DE LA PARTE ALTA DE LA PANTALLA Y LUEGO BAJA
 		//SPAWNER.SpawnObject(new Bubbles(BOTTOM_TO_TOP)); //SALE DE LA PARTE BAJA DE LA PANTALLA Y LUEGO SUBE
 
-		SPAWNER.SpawnObject(new Chomper(Vector2(RM->WINDOW_WIDTH / 1.f, RM->WINDOW_HEIGHT / 2.f)));
-		//SPAWNER.SpawnObject(new Hmedusa());
-
-		//SPAWNER.SpawnObject(new Vmedusa(Vector2(RM->WINDOW_WIDTH / 2.f, RM->WINDOW_HEIGHT)));
-		//SPAWNER.SpawnObject(new Bubbles(TOP_TO_BOTTOM)); //SALE DE LA PARTE ALTA DE LA PANTALLA Y LUEGO BAJA
-		//SPAWNER.SpawnObject(new Bubbles(BOTTOM_TO_TOP)); //SALE DE LA PARTE BAJA DE LA PANTALLA Y LUEGO SUBE
-
-
-		// Cabeza del Circler
-		Circler* head = new Circler();
-		// Segmentos del cuerpo
-		CirclerBody* body1 = new CirclerBody(head, 120.f);       // Primer segmento
-		CirclerBody* body2 = new CirclerBody(body1, 120.f);      // Segundo segmento sigue al primero
-		CirclerBody* body3 = new CirclerBody(body2, 120.f);      // Tercer segmento sigue al segundo
-		                  
-		// A�adir todos a la escena
-		SPAWNER.SpawnObject(head);
-		SPAWNER.SpawnObject(body1);
-		SPAWNER.SpawnObject(body2);
-		SPAWNER.SpawnObject(body3);
 		//SPAWNER.SpawnObject(new Chomper(Vector2(RM->WINDOW_WIDTH / 1.f, RM->WINDOW_HEIGHT / 2.f)));
+		////SPAWNER.SpawnObject(new Hmedusa());
 
-		SPAWNER.SpawnObject(new Beholder(Vector2(100.f,100.f), player));
-		//SPAWNER.SpawnObject(new Chomper(Vector2(RM->WINDOW_WIDTH / 1.f, RM->WINDOW_HEIGHT / 2.f)));
-		SPAWNER.SpawnObject(new KillerWhale());
+		////SPAWNER.SpawnObject(new Vmedusa(Vector2(RM->WINDOW_WIDTH / 2.f, RM->WINDOW_HEIGHT)));
+		////SPAWNER.SpawnObject(new Bubbles(TOP_TO_BOTTOM)); //SALE DE LA PARTE ALTA DE LA PANTALLA Y LUEGO BAJA
+		////SPAWNER.SpawnObject(new Bubbles(BOTTOM_TO_TOP)); //SALE DE LA PARTE BAJA DE LA PANTALLA Y LUEGO SUBE
+
+
+		//// Cabeza del Circler
+		//Circler* head = new Circler();
+		//// Segmentos del cuerpo
+		//CirclerBody* body1 = new CirclerBody(head, 120.f);       // Primer segmento
+		//CirclerBody* body2 = new CirclerBody(body1, 120.f);      // Segundo segmento sigue al primero
+		//CirclerBody* body3 = new CirclerBody(body2, 120.f);      // Tercer segmento sigue al segundo
+		//                  
+		//// A�adir todos a la escena
+		//SPAWNER.SpawnObject(head);
+		//SPAWNER.SpawnObject(body1);
+		//SPAWNER.SpawnObject(body2);
+		//SPAWNER.SpawnObject(body3);
+		////SPAWNER.SpawnObject(new Chomper(Vector2(RM->WINDOW_WIDTH / 1.f, RM->WINDOW_HEIGHT / 2.f)));
+
+		//SPAWNER.SpawnObject(new Beholder(Vector2(100.f,100.f), player));
+		////SPAWNER.SpawnObject(new Chomper(Vector2(RM->WINDOW_WIDTH / 1.f, RM->WINDOW_HEIGHT / 2.f)));
+		//SPAWNER.SpawnObject(new KillerWhale());
 
 		TextObject* text = new TextObject("UASINI");
 		text->GetTransform()->position = { 100.0f, 100.0f };
