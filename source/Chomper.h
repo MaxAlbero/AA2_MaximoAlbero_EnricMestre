@@ -75,7 +75,7 @@ public:
 		float newX = circleCenter.x + circleRadius * cos(circleAngle);
 		float newY = circleCenter.y + circleRadius * sin(circleAngle);
 
-		// Mover a la nueva posición
+		// Mover a la nueva posiciï¿½n
 		_transform->position = Vector2(newX, newY);
 
 		// Verificar si el chomper ha completado una vuelta completa

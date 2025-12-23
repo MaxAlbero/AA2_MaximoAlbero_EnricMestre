@@ -34,6 +34,8 @@ public:
 
 		Move();
 
+		CheckBorders();
+
 		Object::Update();
 	}
 
@@ -44,4 +46,6 @@ public:
 
 		SPAWNER.SpawnObject(new Bullet(Vector2(_transform->position.x + 1, _transform->position.y)));
 	}
+
+	void CheckBorders();
 };

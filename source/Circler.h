@@ -25,7 +25,7 @@ public:
 		_transform->position = Vector2(RM->WINDOW_WIDTH / 2.f, -_transform->size.y);
 		_physics->AddCollider(new AABB(_transform->position, _transform->size));
 
-		health = 1000;
+		enemyHealth = 1000;
 		currentState = SIMPLE_MOVE;
 
 		circleRadius = 300.f;

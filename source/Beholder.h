@@ -29,7 +29,7 @@ public:
 		_physics->AddCollider(new AABB(_transform->position, _transform->size));
 
 
-		health = 100;
+		enemyHealth = 100;
 		currentState = STAY;
 		moveSpeed = 200.f;
 

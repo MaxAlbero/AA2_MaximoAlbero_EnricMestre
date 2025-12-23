@@ -27,3 +27,18 @@ void Player::Move()
 		Shoot();
 	}
 }
+
+
+void Player::CheckBorders() {
+	if (_transform->position.x < _transform->size.x / 2)
+		_transform->position.x = _transform->size.x / 2;
+
+	if (_transform->position.x > RM->WINDOW_WIDTH - _transform->size.x / 2)
+		_transform->position.x = RM->WINDOW_WIDTH - _transform->size.x / 2;
+
+	if (_transform->position.y < _transform->size.y / 2)
+		_transform->position.y = _transform->size.y / 2;
+
+	if (_transform->position.y > RM->WINDOW_HEIGHT - _transform->size.y / 2)
+		_transform->position.y = RM->WINDOW_HEIGHT - _transform->size.y / 2;
+}
