@@ -29,7 +29,7 @@ private:
 	BubbleDirection direction;
 
 public:
-	Bubbles(BubbleDirection dir)
+	Bubbles(BubbleDirection dir, float offsetX = 0.f)
 		: Enemy() {
 		_renderer = new ImageRenderer(_transform, "resources/image.png", Vector2(0.f, 0.f), Vector2(306.f, 562.f));
 
@@ -38,14 +38,14 @@ public:
 		direction = dir;
 
 		if (dir == TOP_TO_BOTTOM) {
-			_transform->position = Vector2(RM->WINDOW_WIDTH / 1.f, RM->WINDOW_HEIGHT / 5.f);
+			_transform->position = Vector2(RM->WINDOW_WIDTH + offsetX, RM->WINDOW_HEIGHT / 5.f);
 		}
 		else {
-			_transform->position = Vector2(RM->WINDOW_WIDTH / 1.f, RM->WINDOW_HEIGHT * 4.f / 5.f);
+			_transform->position = Vector2(RM->WINDOW_WIDTH + offsetX, RM->WINDOW_HEIGHT * 4.f / 5.f);
 		}
 		_physics->AddCollider(new AABB(_transform->position, _transform->size));
 
-		moveSpeed = 1000.f;
+		moveSpeed = 100.f;
 		stopPointX = RM->WINDOW_WIDTH / 3.f;
 
 		currentState = SIMPLE_MOVE;
@@ -56,6 +56,8 @@ public:
 		circleComplete = false;
 
 		returnPhase = DIAGONAL_MOVE;
+
+		health = 20;
 
 		if (dir == TOP_TO_BOTTOM)
 			targetCenterY = RM->WINDOW_HEIGHT / 1.5f;

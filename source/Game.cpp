@@ -13,6 +13,7 @@ void Game::HandleEvents()
 }
 
 void Game::Init() {
+	srand(time(NULL));
 	RM->Init();
 
 	//Aqui la carrega de tots els recursos del joc

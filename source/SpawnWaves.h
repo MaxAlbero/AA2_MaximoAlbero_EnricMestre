@@ -63,28 +63,28 @@ public:
 				switch (waveOrder[currentWave])
 				{
 				case 0:
-					SpawnBubbles();
+					SpawnBubbles(amountEnemies[currentWave]);
 					break;
 				case 1:
 					SpawnKillerWhale(amountEnemies[currentWave]);
 					break;
 				case 2:
-					SpawnHMedusa();
+					SpawnHMedusa(amountEnemies[currentWave]);
 					break;
 				case 3:
 					SpawnCircler();
 					break;
 				case 4:
-					SpawnVMedusa();
+					SpawnVMedusa(amountEnemies[currentWave]);
 					break;
 				case 5:
-					SpawnBeholder();
+					SpawnBeholder(amountEnemies[currentWave]);
 					break;
 				case 6:
 					SpawnChomper(amountEnemies[currentWave]);
 					break;
 				case 7:
-					SpawnAmoeba();
+					SpawnAmoeba(amountEnemies[currentWave]);
 					break;
 				default:
 					break;
@@ -98,9 +98,21 @@ public:
 		}
 	}
 
-	void SpawnVMedusa() {}
-	void SpawnHMedusa() {}
-	void SpawnBeholder() {
+	void SpawnVMedusa(int count) {
+	
+
+	}
+
+	void SpawnHMedusa(int count) {
+		for (int i = 0; i < count; i++) {
+
+			float speed = rand() % 400 + 100;
+			float positionY = rand() % RM->WINDOW_HEIGHT;
+			SPAWNER.SpawnObject(new Hmedusa(Vector2(RM->WINDOW_WIDTH + 50.f, positionY)));
+		}
+	}
+
+	void SpawnBeholder(int count) {
 		//for (int i = 1; i < 3; i++) {
 		//	SPAWNER.SpawnObject(new Beholder(Vector2(RM->WINDOW_WIDTH - 50 * 1, RM->WINDOW_HEIGHT - 20)));
 		//}
@@ -113,7 +125,20 @@ public:
 			WM->SetEnemy(chomper);
 		}
 	}
-	void SpawnBubbles() {}
+	void SpawnBubbles(int count) {
+		float offsetX = 100.f;
+
+		for (int i = 0; i < count; i++) {
+			Enemy* bubbleUp = new Bubbles(TOP_TO_BOTTOM);
+			bubbleUp->GetTransform()->position.x += offsetX * i;
+			SPAWNER.SpawnObject(bubbleUp);
+			WM->SetEnemy(bubbleUp);
+			Enemy* bubbleDown = new Bubbles(BOTTOM_TO_TOP);
+			bubbleDown->GetTransform()->position.x += offsetX * i;
+			SPAWNER.SpawnObject(bubbleDown);
+			WM->SetEnemy(bubbleDown);
+		}
+	}
 	void SpawnKillerWhale(int count) {
 
 		for (int i = 0; i < count; i++) {
@@ -125,7 +150,26 @@ public:
 		std::cout << "Spawned Whales" << std::endl;
 
 	}
-	void SpawnCircler() {}
-	void SpawnAmoeba() {}
-	void SpawnBioTitan() {}
+
+	void SpawnCircler() {
+		Circler* head = new Circler();
+		SPAWNER.SpawnObject(head);
+		WM->SetEnemy(head);
+
+		Enemy* previousSegment = head; // El primer segmento sigue a la cabeza
+
+		for (int i = 0; i < 3; i++) {
+			CirclerBody* body = new CirclerBody(previousSegment, 120.f);
+			SPAWNER.SpawnObject(body);
+
+
+			previousSegment = body; // El siguiente segmento seguirá a este
+		}
+	}
+
+	void SpawnAmoeba(int count) {}
+	void SpawnBioTitan() {
+		
+
+	}
 };
