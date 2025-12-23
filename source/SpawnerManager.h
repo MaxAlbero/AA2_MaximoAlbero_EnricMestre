@@ -14,47 +14,21 @@ public:
 		return &instance;
 	}
 
-	void SetEnemy(Enemy* e) { //AddEnemy
-		waveEnemies.push_back(e);
-	}
+	void SetEnemy(Enemy* e); //AddEnemy
 
-	void CheckCurrentWave() {
-		if (_waveActive) {
-			for (int i = waveEnemies.size() - 1; i >= 0; i--) {
-				if (waveEnemies[i]->IsPendngDestroy()) {
-					waveEnemies.erase(waveEnemies.begin() + i);
-				}
-			}
-			if (waveEnemies.empty()){
-				SpawnPowerUp();
-				_waveActive = false;
-			}
-		}
-	}
+	void CheckCurrentWave();
 
-	bool GetWaveActive() {
-		return _waveActive;
-	}
+	bool GetWaveActive();
 	
-	bool GetNextWave() {
-		return _nextWave;
-	}
+	bool GetNextWave();
 
-	void SpawnPowerUp() {
-		//SPAWNER.SpawnObject(new PowerUp(spawnPowerUp));
-	}
+	void SpawnPowerUp();
 
-	void SetWaveActive(bool active) {
-		_waveActive = active;
-	}
+	void SetWaveActive(bool active);
 
-	void SetNextWave(bool nextWave) {
-		_nextWave = nextWave;
-	}
+	void SetNextWave(bool nextWave);
 
-	void SetPositionPowerUp(Vector2 newPos) {
-		spawnPowerUp;
-	}
+	void SetPositionPowerUp(Vector2 newPos);
 
 private:
 	std::vector<Enemy*> waveEnemies;

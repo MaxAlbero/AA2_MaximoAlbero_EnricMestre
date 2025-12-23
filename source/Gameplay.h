@@ -10,6 +10,8 @@
 #include "Background.h"
 #include "Scroll.h"
 
+#include "LoadLevel.h"
+
 class Gameplay : public Scene {
 public:
 	SpawnWaves* waves;
@@ -18,6 +20,15 @@ public:
 	void OnEnter() override {
 
 		waves = new SpawnWaves();
+		LoadLevel levelLoader;
+		std::string filePath = "level_1.xml";
+
+		if (levelLoader.LoadFile(filePath, waves->GetWaveOrder(), waves->GetAmountEnemies())) {
+			std::cout << "Level loaded successfully" << std::endl;
+		}
+		else {
+			std::cout << "Failed to load level" << std::endl;
+		}
 
 		Background* bg1 = new Background();
 		//bg1->GetTransform()->position = { (float)RM->WINDOW_WIDTH, (float)RM->WINDOW_HEIGHT / 2.0f };

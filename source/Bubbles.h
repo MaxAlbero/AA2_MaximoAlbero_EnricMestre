@@ -7,8 +7,8 @@ enum ReturnPhase {
 };
 
 enum BubbleDirection {
-	TOP_TO_BOTTOM,    // Aparece arriba, sale abajo (comportamiento actual)
-	BOTTOM_TO_TOP     // Aparece abajo, sale arriba (nuevo)
+	TOP_TO_BOTTOM,    // Aparece arriba, sale abajo
+	BOTTOM_TO_TOP     // Aparece abajo, sale arriba
 };
 
 class Bubbles : public Enemy {

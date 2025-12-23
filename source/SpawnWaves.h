@@ -16,23 +16,91 @@
 class SpawnWaves {
 private:
 	int currentWave = -1;
-	const int maxWaves = 5;
+	int maxWaves = 7;
 	float offsetCircler = 30.f;
 	float offsetChomper = 50.f;
 
 	float spawnTimer;
-	float delaySpawnDuration = 5.0f;
+	float delaySpawnDuration = 1.0f;
 	std::vector<int> waveOrder;
 	std::vector<int> amountEnemies;
 
+	void SetMaxWaves() {
+		maxWaves = waveOrder.size();
+	}
+
+	void WaitForNextWave() {
+		spawnTimer += TM.GetDeltaTime();
+		if (spawnTimer >= delaySpawnDuration) {
+			if (currentWave < maxWaves - 1) {
+				currentWave++;
+				spawnTimer = 0.f;
+				WM->SetWaveActive(true);
+				WM->SetNextWave(true);
+			}
+			else {
+				SpawnBioTitan();
+			}
+		}
+	}
+
 public:
+	std::vector<int>& GetWaveOrder() {
+		return waveOrder;
+	}
+
+	std::vector<int>& GetAmountEnemies() {
+		return amountEnemies;
+	}
+
+	void Start() {
+		SetMaxWaves();
+	}
 
 	void Update() {
+		if (WM->GetWaveActive()) {
+			if (WM->GetNextWave()) {
+				switch (waveOrder[currentWave])
+				{
+				case 0:
+					SpawnBubbles();
+					break;
+				case 1:
+					SpawnKillerWhale(amountEnemies[currentWave]);
+					break;
+				case 2:
+					SpawnHMedusa();
+					break;
+				case 3:
+					SpawnCircler();
+					break;
+				case 4:
+					SpawnVMedusa();
+					break;
+				case 5:
+					SpawnBeholder();
+					break;
+				case 6:
+					SpawnChomper();
+					break;
+				case 7:
+					SpawnAmoeba();
+					break;
+				default:
+					break;
+				}
+				WM->SetNextWave(false);
+			}
+			WM->CheckCurrentWave();
+		}
+		else {
+			WaitForNextWave();
+		}
 
 		if(IM->GetEvent(SDLK_1, DOWN))
 			SpawnBubbles();
 		if(IM->GetEvent(SDLK_2, DOWN))
-			SpawnKillerWhale();
+			SpawnKillerWhale(amountEnemies[currentWave]);
 		if(IM->GetEvent(SDLK_3, DOWN))
 			SpawnVMedusa();
 		if(IM->GetEvent(SDLK_4, DOWN))
@@ -56,18 +124,24 @@ public:
 		//	SPAWNER.SpawnObject(new Beholder(Vector2(RM->WINDOW_WIDTH - 50 * 1, RM->WINDOW_HEIGHT - 20)));
 		//}
 	}
-	void SpawnChomper() {}
+	void SpawnChomper() {
+		for (int i = 0; i < 15; i++)
+		{
+			Chomper* chomper = new Chomper(Vector2(RM->WINDOW_WIDTH - 50, (offsetChomper * i)));
+			SPAWNER.SpawnObject(chomper);
+			WM->SetEnemy(chomper);
+		}
+	}
 	void SpawnBubbles() {}
-	void SpawnKillerWhale() {
+	void SpawnKillerWhale(int count) {
 
-		KillerWhale* kw1 = new KillerWhale(true);
-		KillerWhale* kw2 = new KillerWhale(false);
+		for (int i = 0; i < count; i++) {
+			KillerWhale* kw = new KillerWhale(i % 2 == 0);
+			SPAWNER.SpawnObject(kw);
+			WM->SetEnemy(kw);
+		}
 
-		SPAWNER.SpawnObject(kw1);
-		WM->SetEnemy(kw1);
-
-		SPAWNER.SpawnObject(kw2);
-		WM->SetEnemy(kw2);
+		std::cout << "Spawned Whales" << std::endl;
 
 	}
 	void SpawnCircler() {}

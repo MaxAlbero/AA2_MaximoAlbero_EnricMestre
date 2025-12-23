@@ -34,7 +34,7 @@ public:
 		//1) Destruir
 		for (int i = _objects.size() - 1; i >= 0; i--)
 		{
-			if (_objects[i]->IsPendngDestroy())
+			if (_objects[i]->IsPendingDestroy())
 			{
 				delete _objects[i];
 				_objects.erase(_objects.begin() + i);
@@ -42,7 +42,7 @@ public:
 		}
 
 		for (int i = _ui.size() - 1; i >= 0; i--) {
-			if (_ui[i]->IsPendngDestroy()) {
+			if (_ui[i]->IsPendingDestroy()) {
 				delete _ui[i];
 				_ui.erase(_ui.begin() + i);
 			}

@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="source\LoadLevel.cpp" />
     <ClCompile Include="source\Player.cpp" />
     <ClCompile Include="source\AABB.cpp" />
     <ClCompile Include="source\Bullet.cpp" />
@@ -35,10 +36,10 @@
     <ClCompile Include="source\TextRenderer.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="dependencies\rapidXML\rapidxml.hpp" />
-    <ClInclude Include="dependencies\rapidXML\rapidxml_iterators.hpp" />
-    <ClInclude Include="dependencies\rapidXML\rapidxml_print.hpp" />
-    <ClInclude Include="dependencies\rapidXML\rapidxml_utils.hpp" />
+    <ClInclude Include="dependencies\inc\rapidXML\rapidxml.hpp" />
+    <ClInclude Include="dependencies\inc\rapidXML\rapidxml_iterators.hpp" />
+    <ClInclude Include="dependencies\inc\rapidXML\rapidxml_print.hpp" />
+    <ClInclude Include="dependencies\inc\rapidXML\rapidxml_utils.hpp" />
     <ClInclude Include="source\Beholder.h" />
     <ClInclude Include="source\Bubbles.h" />
     <ClInclude Include="source\Chomper.h" />
@@ -48,6 +49,7 @@
     <ClInclude Include="source\IDamageable.h" />
     <ClInclude Include="source\Hmedusa.h" />
     <ClInclude Include="source\KillerWhale.h" />
+    <ClInclude Include="source\LoadLevel.h" />
     <ClInclude Include="source\Player.h" />
     <ClInclude Include="source\AABB.h" />
     <ClInclude Include="source\Background.h" />
@@ -85,6 +87,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include=".gitignore" />
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="resources\level_1.xml" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
