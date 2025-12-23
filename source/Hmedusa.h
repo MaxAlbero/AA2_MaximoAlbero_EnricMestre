@@ -6,7 +6,7 @@ private:
 	float moveSpeed;
 
 public:
-	Hmedusa(Vector2 spawnPos)
+	Hmedusa(Vector2 spawnPos, int speed)
 		: Enemy ()
 	{
 		_renderer = new ImageRenderer(_transform, "resources/bebe.jpg", Vector2(0.f, 0.f), Vector2(360.f, 360.f));
@@ -17,7 +17,7 @@ public:
 		_physics->AddCollider(new AABB(_transform->position, _transform->size));
 
 		health = 20;
-		moveSpeed = 100.f;
+		moveSpeed = speed;
 	}
 
 	void Update() override {

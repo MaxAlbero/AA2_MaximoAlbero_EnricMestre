@@ -49,6 +49,7 @@ void TextRenderer::SetText(std::string text)
 
 	//3)Crear textura
 	_textTexture = SDL_CreateTextureFromSurface(RM->GetRenderer(), surf);
+	SDL_DestroySurface(surf);
 	assert(_textTexture);
 
 	//4)Definir source rect

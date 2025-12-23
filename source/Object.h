@@ -42,6 +42,6 @@ public:
 	RigidBody* GetRigidBody() { return _physics; }
 	virtual void OnCollision(Object* other) {}
 	//De moment no fan res
-	bool IsPendngDestroy() const { return _isPendingDestroy; }
+	bool IsPendingDestroy() const { return _isPendingDestroy; }
 	virtual void Destroy() { _isPendingDestroy = true; }
 };

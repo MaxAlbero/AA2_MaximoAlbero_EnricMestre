@@ -22,7 +22,7 @@ public:
 		_transform->position = spawnPos;
 		_physics->AddCollider(new AABB(_transform->position, _transform->size));
 
-		health = 200;
+		health = 20;
 		currentState = STAY;
 
 		stopTimer = 0.f;

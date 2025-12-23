@@ -4,71 +4,46 @@
 #include "TestObject.h"
 #include "Player.h"
 #include "Enemy.h"
-#include "Hmedusa.h"
-#include "Vmedusa.h"
-#include "Bubbles.h"
-#include "Chomper.h"
-#include "Circler.h"
-#include "CirclerBody.h"
-#include "Beholder.h"
-#include "KillerWhale.h"
+
+#include "SpawnWaves.h"
 
 #include "Background.h"
 #include "Scroll.h"
 
+#include "LoadLevel.h"
+
 class Gameplay : public Scene {
-
-protected:
-	Scroll _scroll;
-
 public:
+	SpawnWaves* waves;
 	Gameplay() = default;
 
 	void OnEnter() override {
 
+		waves = new SpawnWaves();
+		LoadLevel levelLoader;
+		std::string filePath = "level_1.xml";
+
+		if (levelLoader.LoadFile(filePath, waves->GetWaveOrder(), waves->GetAmountEnemies())) {
+			std::cout << "Level loaded successfully" << std::endl;
+			waves->Start();
+		}
+		else {
+			std::cout << "Failed to load level" << std::endl;
+		}
+
 		Background* bg1 = new Background();
-		//bg1->GetTransform()->position = { (float)RM->WINDOW_WIDTH, (float)RM->WINDOW_HEIGHT / 2.0f };
-		//bg1->GetTransform()->size = { 1000.f, 1000.f };
+
 		Background* bg2 = new Background();
 		bg2->GetTransform()->position = Vector2(RM->WINDOW_WIDTH * 2.0f, RM->WINDOW_HEIGHT / 2.0f);
-		//bg2->GetTransform()->size = { 1000.f, 1000.f };
 
 		SPAWNER.SpawnObject(bg1);
 		SPAWNER.SpawnObject(bg2);
 
 		Player* player = new Player();
 		SPAWNER.SpawnObject(player);
-		//SPAWNER.SpawnObject(new Enemy());
 
-		//SPAWNER.SpawnObject(new Vmedusa(Vector2(RM->WINDOW_WIDTH / 2.f, RM->WINDOW_HEIGHT)));
-		//SPAWNER.SpawnObject(new Bubbles(TOP_TO_BOTTOM)); //SALE DE LA PARTE ALTA DE LA PANTALLA Y LUEGO BAJA
-		//SPAWNER.SpawnObject(new Bubbles(BOTTOM_TO_TOP)); //SALE DE LA PARTE BAJA DE LA PANTALLA Y LUEGO SUBE
+		waves->SetPlayer(player);
 
-		SPAWNER.SpawnObject(new Chomper(Vector2(RM->WINDOW_WIDTH / 1.f, RM->WINDOW_HEIGHT / 2.f)));
-		//SPAWNER.SpawnObject(new Hmedusa());
-
-		//SPAWNER.SpawnObject(new Vmedusa(Vector2(RM->WINDOW_WIDTH / 2.f, RM->WINDOW_HEIGHT)));
-		//SPAWNER.SpawnObject(new Bubbles(TOP_TO_BOTTOM)); //SALE DE LA PARTE ALTA DE LA PANTALLA Y LUEGO BAJA
-		//SPAWNER.SpawnObject(new Bubbles(BOTTOM_TO_TOP)); //SALE DE LA PARTE BAJA DE LA PANTALLA Y LUEGO SUBE
-
-
-		// Cabeza del Circler
-		Circler* head = new Circler();
-		// Segmentos del cuerpo
-		CirclerBody* body1 = new CirclerBody(head, 120.f);       // Primer segmento
-		CirclerBody* body2 = new CirclerBody(body1, 120.f);      // Segundo segmento sigue al primero
-		CirclerBody* body3 = new CirclerBody(body2, 120.f);      // Tercer segmento sigue al segundo
-		                  
-		// A�adir todos a la escena
-		SPAWNER.SpawnObject(head);
-		SPAWNER.SpawnObject(body1);
-		SPAWNER.SpawnObject(body2);
-		SPAWNER.SpawnObject(body3);
-		//SPAWNER.SpawnObject(new Chomper(Vector2(RM->WINDOW_WIDTH / 1.f, RM->WINDOW_HEIGHT / 2.f)));
-
-		SPAWNER.SpawnObject(new Beholder(Vector2(100.f,100.f), player));
-		//SPAWNER.SpawnObject(new Chomper(Vector2(RM->WINDOW_WIDTH / 1.f, RM->WINDOW_HEIGHT / 2.f)));
-		SPAWNER.SpawnObject(new KillerWhale());
 
 		TextObject* text = new TextObject("UASINI");
 		text->GetTransform()->position = { 100.0f, 100.0f };
@@ -77,7 +52,12 @@ public:
 
 	void OnExit() override { Scene::OnExit(); }
 
-	void Update() override { Scene::Update(); }
+	void Update() override { 
+		waves->Update();
+
+		Scene::Update(); 
+	
+	}
 
 	void Render() override { Scene::Render(); }
 };
