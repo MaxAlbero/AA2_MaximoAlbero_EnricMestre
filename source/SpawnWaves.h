@@ -1,7 +1,6 @@
 #pragma once
 #include "InputManager.h"
 #include "Spawner.h"
-
 #include "SpawnerManager.h"
 
 #include "Hmedusa.h"
@@ -12,36 +11,44 @@
 #include "CirclerBody.h"
 #include "Beholder.h"
 #include "KillerWhale.h"
+#include "BioTitan.h"
 
 class SpawnWaves {
 private:
-	int currentWave = -1;
+	int currentWave = 0;
 	int maxWaves = 8;
 	float offsetCircler = 30.f;
 	float offsetChomper = 50.f;
 
 	float spawnTimer;
-	float delaySpawnDuration = 1.0f;
+	float delaySpawnDuration = 2.0f;
 	std::vector<int> waveOrder;
 	std::vector<int> amountEnemies;
 
 	Player* playerRef;
+
+	bool waitingForWaveClear;
+	bool bossSpawned;
 
 	void SetMaxWaves() {
 		maxWaves = waveOrder.size();
 	}
 
 	void WaitForNextWave() {
-		spawnTimer += TM.GetDeltaTime();
-		if (spawnTimer >= delaySpawnDuration) {
-			if (currentWave < maxWaves - 1) {
-				currentWave++;
-				spawnTimer = 0.f;
-				WM->SetWaveActive(true);
-				WM->SetNextWave(true);
-			}
-			else {
-				SpawnBioTitan();
+		if (!WM->GetWaveActive()) {
+			spawnTimer += TM.GetDeltaTime();
+			if (spawnTimer >= delaySpawnDuration) {
+				if (currentWave < maxWaves - 1) {
+					currentWave++;
+					spawnTimer = 0.f;
+					WM->SetWaveActive(true);
+					WM->SetNextWave(true);
+				}
+				else if(!bossSpawned) {
+					SpawnBioTitan();
+					bossSpawned = true;
+					spawnTimer = 0.f;
+				}
 			}
 		}
 	}
@@ -61,6 +68,9 @@ public:
 
 	void Start() {
 		SetMaxWaves();
+		WM->SetWaveActive(true);
+		WM->SetNextWave(true);
+		bossSpawned = false;
 	}
 
 	void Update() {
@@ -108,9 +118,13 @@ public:
 		for (int i = 0; i < count; i++) {
 
 			float positionX = rand() % RM->WINDOW_WIDTH;
-			SPAWNER.SpawnObject(new Vmedusa(Vector2(positionX, RM->WINDOW_HEIGHT + 50.f)));
-		}
 
+			Vmedusa* medusa = new Vmedusa(Vector2(positionX, RM->WINDOW_HEIGHT + 50.f));
+
+			SPAWNER.SpawnObject(medusa);
+			WM->SetEnemy(medusa);
+
+		}
 	}
 
 	void SpawnHMedusa(int count) {
@@ -118,7 +132,12 @@ public:
 
 			int speed = rand() % 400 + 100;
 			float positionY = rand() % RM->WINDOW_HEIGHT;
-			SPAWNER.SpawnObject(new Hmedusa(Vector2(RM->WINDOW_WIDTH + 50.f, positionY), speed));
+
+			Hmedusa* medusa = new Hmedusa(Vector2(RM->WINDOW_WIDTH + 50.f, positionY), speed);
+
+			SPAWNER.SpawnObject(medusa);
+			WM->SetEnemy(medusa);
+
 		}
 	}
 
@@ -133,22 +152,25 @@ public:
 		for (int i = 0; i < count; i++) {
 			Vector2 spawnPos;
 
-			switch (i) {
-			case 0: // Esquina superior izquierda
+			switch (i % 4) {
+			case 0:
 				spawnPos = Vector2(margin, margin);
 				break;
-			case 1: // Esquina superior derecha
+			case 1:
 				spawnPos = Vector2(RM->WINDOW_WIDTH - margin, margin);
 				break;
-			case 2: // Esquina inferior derecha
+			case 2:
 				spawnPos = Vector2(RM->WINDOW_WIDTH - margin, RM->WINDOW_HEIGHT - margin);
 				break;
-			case 3: // Esquina inferior izquierda
+			case 3:
 				spawnPos = Vector2(margin, RM->WINDOW_HEIGHT - margin);
 				break;
 			}
 
-			SPAWNER.SpawnObject(new Beholder(spawnPos, playerRef));
+			Beholder* beholder = new Beholder(spawnPos, playerRef);
+			SPAWNER.SpawnObject(beholder);
+			WM->SetEnemy(beholder);
+
 		}
 	}
 
@@ -203,9 +225,13 @@ public:
 		}
 	}
 
-	void SpawnAmoeba(int count) {}
-	void SpawnBioTitan() {
-		
+	void SpawnAmoeba(int count) {
+			
+	}
 
+	void SpawnBioTitan() {
+		BioTitan* boss = new BioTitan();
+		SPAWNER.SpawnObject(boss);
+		WM->SetEnemy(boss);
 	}
 };

@@ -40,6 +40,9 @@ public:
 		case SHOOT:
 			Shoot();
 			break;
+		case STAY:
+			EnemyBehaviour();
+			break;
 		}
 
 
@@ -69,8 +72,6 @@ public:
 
 			EnemyBullet* bullet = new EnemyBullet(bulletPos);
 			SPAWNER.SpawnObject(bullet);
-			// Aquí necesitas añadir la bala a tu gestor de objetos
-			// Por ejemplo: ObjectManager::GetInstance()->AddObject(bullet);
 
 			shootTimer = 0.f;
 			shotsFired++;
@@ -78,9 +79,18 @@ public:
 			std::cout << "BioTitan shoots! (" << shotsFired << "/" << maxShots << ")" << std::endl;
 
 			if (shotsFired >= maxShots) {
-				currentState = RETURN;
+				currentState = STAY;
 			}
 		}
 	}
 
+
+	void EnemyBehaviour() override {
+		shootTimer = 0.f;
+		shootCooldown = 0.5f;
+		shotsFired = 0;
+		maxShots = 5;
+
+		currentState = SHOOT;
+	}
 };
