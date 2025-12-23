@@ -81,7 +81,7 @@ public:
 					SpawnBeholder();
 					break;
 				case 6:
-					SpawnChomper();
+					SpawnChomper(amountEnemies[currentWave]);
 					break;
 				case 7:
 					SpawnAmoeba();
@@ -96,25 +96,6 @@ public:
 		else {
 			WaitForNextWave();
 		}
-
-		if(IM->GetEvent(SDLK_1, DOWN))
-			SpawnBubbles();
-		if(IM->GetEvent(SDLK_2, DOWN))
-			SpawnKillerWhale(amountEnemies[currentWave]);
-		if(IM->GetEvent(SDLK_3, DOWN))
-			SpawnVMedusa();
-		if(IM->GetEvent(SDLK_4, DOWN))
-			SpawnHMedusa();
-		if(IM->GetEvent(SDLK_5, DOWN))
-			SpawnChomper();
-		if(IM->GetEvent(SDLK_6, DOWN))
-			SpawnCircler();
-		if(IM->GetEvent(SDLK_7, DOWN))
-			SpawnBeholder();
-		if(IM->GetEvent(SDLK_8, DOWN))
-			SpawnAmoeba();
-		if(IM->GetEvent(SDLK_9, DOWN))
-			SpawnBioTitan();
 	}
 
 	void SpawnVMedusa() {}
@@ -124,8 +105,8 @@ public:
 		//	SPAWNER.SpawnObject(new Beholder(Vector2(RM->WINDOW_WIDTH - 50 * 1, RM->WINDOW_HEIGHT - 20)));
 		//}
 	}
-	void SpawnChomper() {
-		for (int i = 0; i < 15; i++)
+	void SpawnChomper(int count) {
+		for (int i = 0; i < count; i++)
 		{
 			Chomper* chomper = new Chomper(Vector2(RM->WINDOW_WIDTH - 50, (offsetChomper * i)));
 			SPAWNER.SpawnObject(chomper);

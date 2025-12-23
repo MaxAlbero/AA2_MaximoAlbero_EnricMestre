@@ -25,6 +25,7 @@ public:
 
 		if (levelLoader.LoadFile(filePath, waves->GetWaveOrder(), waves->GetAmountEnemies())) {
 			std::cout << "Level loaded successfully" << std::endl;
+			waves->Start();
 		}
 		else {
 			std::cout << "Failed to load level" << std::endl;
@@ -81,7 +82,12 @@ public:
 
 	void OnExit() override { Scene::OnExit(); }
 
-	void Update() override { Scene::Update(); }
+	void Update() override { 
+		waves->Update();
+
+		Scene::Update(); 
+	
+	}
 
 	void Render() override { Scene::Render(); }
 };
