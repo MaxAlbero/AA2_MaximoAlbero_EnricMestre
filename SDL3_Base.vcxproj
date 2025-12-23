@@ -40,6 +40,7 @@
     <ClInclude Include="source\Chomper.h" />
     <ClInclude Include="source\Circler.h" />
     <ClInclude Include="source\CirclerBody.h" />
+    <ClInclude Include="source\EnemyBullet.h" />
     <ClInclude Include="source\IAttacker.h" />
     <ClInclude Include="source\IDamageable.h" />
     <ClInclude Include="source\Hmedusa.h" />

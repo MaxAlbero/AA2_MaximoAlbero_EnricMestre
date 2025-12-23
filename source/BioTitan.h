@@ -1,9 +1,15 @@
 #pragma once
 #include "Enemy.h"
+#include "EnemyBullet.h"
 
 class BioTitan : public Enemy {
 private:
 	int moveSpeed;
+
+	float shootTimer;
+	float shootCooldown;
+	int shotsFired;
+	int maxShots;
 public:
 	BioTitan()
 		: Enemy() {
@@ -18,6 +24,10 @@ public:
 		currentState = SIMPLE_MOVE;
 
 		moveSpeed = 100.f;
+		shootTimer = 0.f;
+		shootCooldown = 0.5f; // Dispara cada 0.5 segundos
+		shotsFired = 0;
+		maxShots = 5;
 	}
 
 
@@ -28,6 +38,7 @@ public:
 			Move();
 			break;
 		case SHOOT:
+			Shoot();
 			break;
 		}
 
@@ -45,5 +56,31 @@ public:
 	}
 
 	//void Attack(IAttacker* other) const override;
+
+	void Shoot() {
+		shootTimer += TM.GetDeltaTime();
+
+		if (shootTimer >= shootCooldown) {
+			// Crear bala desde la posición del BioTitan
+			Vector2 bulletPos = Vector2(
+				_transform->position.x - _transform->size.x / 2.f,
+				_transform->position.y
+			);
+
+			EnemyBullet* bullet = new EnemyBullet(bulletPos);
+			SPAWNER.SpawnObject(bullet);
+			// Aquí necesitas añadir la bala a tu gestor de objetos
+			// Por ejemplo: ObjectManager::GetInstance()->AddObject(bullet);
+
+			shootTimer = 0.f;
+			shotsFired++;
+
+			std::cout << "BioTitan shoots! (" << shotsFired << "/" << maxShots << ")" << std::endl;
+
+			if (shotsFired >= maxShots) {
+				currentState = RETURN;
+			}
+		}
+	}
 
 };
