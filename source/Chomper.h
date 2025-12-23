@@ -9,6 +9,7 @@ private:
 	float circleSpeed;
 	bool circleComplete;
 	float horizontalMove;
+	int health;
 
 	float stopDuration;
 	float stopTimer;

@@ -22,6 +22,7 @@ private:
 	float circleAngle;
 	float circleSpeed; // velocidad angular en radianes por segundo
 	bool circleComplete;
+	int health;
 
 	ReturnPhase returnPhase;
 	float targetCenterY;

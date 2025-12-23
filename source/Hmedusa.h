@@ -4,7 +4,7 @@
 class Hmedusa : public Enemy {
 private:
 	float moveSpeed;
-
+	int health;
 public:
 	Hmedusa(Vector2 spawnPos, int speed)
 		: Enemy ()
