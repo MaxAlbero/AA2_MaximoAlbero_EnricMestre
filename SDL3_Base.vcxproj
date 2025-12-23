@@ -41,6 +41,7 @@
     <ClInclude Include="source\IAttacker.h" />
     <ClInclude Include="source\IDamageable.h" />
     <ClInclude Include="source\Hmedusa.h" />
+    <ClInclude Include="source\KillerWhale.h" />
     <ClInclude Include="source\Player.h" />
     <ClInclude Include="source\AABB.h" />
     <ClInclude Include="source\Background.h" />

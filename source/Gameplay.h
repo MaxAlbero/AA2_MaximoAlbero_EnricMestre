@@ -11,6 +11,7 @@
 #include "Circler.h"
 #include "CirclerBody.h"
 #include "Beholder.h"
+#include "KillerWhale.h"
 
 #include "Background.h"
 #include "Scroll.h"
@@ -66,6 +67,8 @@ public:
 		//SPAWNER.SpawnObject(new Chomper(Vector2(RM->WINDOW_WIDTH / 1.f, RM->WINDOW_HEIGHT / 2.f)));
 
 		SPAWNER.SpawnObject(new Beholder(Vector2(100.f,100.f), player));
+		//SPAWNER.SpawnObject(new Chomper(Vector2(RM->WINDOW_WIDTH / 1.f, RM->WINDOW_HEIGHT / 2.f)));
+		SPAWNER.SpawnObject(new KillerWhale());
 
 		TextObject* text = new TextObject("UASINI");
 		text->GetTransform()->position = { 100.0f, 100.0f };
