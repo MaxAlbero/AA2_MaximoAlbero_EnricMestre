@@ -2,6 +2,8 @@
 #include "InputManager.h"
 #include "Spawner.h"
 
+#include "SpawnerManager.h"
+
 #include "Hmedusa.h"
 #include "Vmedusa.h"
 #include "Bubbles.h"
@@ -12,8 +14,17 @@
 #include "KillerWhale.h"
 
 class SpawnWaves {
+private:
+	int currentWave = -1;
+	const int maxWaves = 5;
+	float offsetCircler = 30.f;
+	float offsetChomper = 50.f;
 
-	
+	float spawnTimer;
+	float delaySpawnDuration = 5.0f;
+	std::vector<int> waveOrder;
+	std::vector<int> amountEnemies;
+
 public:
 
 	void Update() {
@@ -49,8 +60,15 @@ public:
 	void SpawnBubbles() {}
 	void SpawnKillerWhale() {
 
-		SPAWNER.SpawnObject(new KillerWhale(true));
-		SPAWNER.SpawnObject(new KillerWhale(false));
+		KillerWhale* kw1 = new KillerWhale(true);
+		KillerWhale* kw2 = new KillerWhale(false);
+
+		SPAWNER.SpawnObject(kw1);
+		WM->SetEnemy(kw1);
+
+		SPAWNER.SpawnObject(kw2);
+		WM->SetEnemy(kw2);
+
 	}
 	void SpawnCircler() {}
 	void SpawnAmoeba() {}
