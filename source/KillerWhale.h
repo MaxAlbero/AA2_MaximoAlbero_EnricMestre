@@ -60,6 +60,7 @@ public:
 			// Verificar si alcanzó el suelo
 			if (_transform->position.y >= RM->WINDOW_HEIGHT - _transform->size.y) {
 				currentState = STAY;
+				topOfScreen = false;
 				_transform->position.y = RM->WINDOW_HEIGHT - _transform->size.y;
 				std::cout << "Killer Whale se pegó al suelo" << std::endl;
 			}
@@ -70,6 +71,7 @@ public:
 			// Verificar si alcanzó el techo
 			if (_transform->position.y <= 0.f) {
 				currentState = STAY;
+				topOfScreen = true;
 				_transform->position.y = 0.f;
 				std::cout << "Killer Whale se pegó al techo" << std::endl;
 			}
@@ -79,7 +81,7 @@ public:
 	void EnemyBehaviour() override {
 		if (topOfScreen == true) {
 			_physics->SetVelocity(Vector2(-attachedSpeed, 0.f));
-			_transform->position.y = 0.f;
+			//_transform->position.y = 0.f;
 
 			if (_transform->position.x <= RM->WINDOW_WIDTH / 2.f) {
 				currentState = SIMPLE_MOVE;
@@ -88,7 +90,7 @@ public:
 		}
 		else {
 			_physics->SetVelocity(Vector2(-attachedSpeed, 0.f));
-			_transform->position.y = RM->WINDOW_HEIGHT - _transform->size.y;  // Asegurar que esté pegado al suelo
+			//_transform->position.y = RM->WINDOW_HEIGHT - _transform->size.y;  // Asegurar que esté pegado al suelo
 
 			if (_transform->position.x <= RM->WINDOW_WIDTH / 2.f) {
 				currentState = SIMPLE_MOVE;
