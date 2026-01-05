@@ -19,7 +19,11 @@ void Game::Init() {
 	//Aqui la carrega de tots els recursos del joc
 	RM->LoadTexture("resources/image.png");
 	RM->LoadTexture("resources/UmaSentimiento.jpg");
-	RM->LoadTexture("resources/bebe.jpg");
+	RM->LoadTexture("resources/VMedusa.png");
+	RM->LoadTexture("resources/pompa.png");
+	RM->LoadTexture("resources/caballo.png");
+	RM->LoadTexture("resources/RayoNave.png");
+	RM->LoadTexture("resources/Wailord.png");
 
 	RM->LoadFont("resources/fonts/hyperspace.ttf");
 
@@ -28,8 +32,8 @@ void Game::Init() {
 	assert(SM.AddScene("Gameplay", new Gameplay()));
 
 
-	//assert(SM.InitFirstScene("MainMenu"));
-	assert(SM.InitFirstScene("Gameplay"));
+	assert(SM.InitFirstScene("MainMenu"));
+	//assert(SM.InitFirstScene("Gameplay"));
 
 	_isRunning = !IM->Listen();
 }

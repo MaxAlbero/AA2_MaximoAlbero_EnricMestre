@@ -1,6 +1,13 @@
 #include "Bullet.h"
+#include "Enemy.h"
 
 void Bullet::OnCollision(Object* other)
 {
-	//Destroy();
+	//HOLAAAA
+	// 
+	Enemy* enemy = dynamic_cast<Enemy*>(other);
+	if (enemy != nullptr)
+	{
+		Destroy();
+	}
 }

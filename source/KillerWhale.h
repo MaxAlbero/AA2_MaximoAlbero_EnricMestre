@@ -12,7 +12,7 @@ private:
 public:
 	KillerWhale(bool startAtTop = false)
 		: Enemy() {
-		_renderer = new ImageRenderer(_transform, "resources/image.png", Vector2(0.f, 0.f), Vector2(306.f, 562.f));
+		_renderer = new ImageRenderer(_transform, "resources/Wailord.png", Vector2(0.f, 0.f), Vector2(306.f, 562.f));
 		_transform->size = Vector2(150.f, 80.f);
 
 		// Set start and end positions
