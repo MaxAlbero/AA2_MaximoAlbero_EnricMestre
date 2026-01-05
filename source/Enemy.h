@@ -47,7 +47,7 @@ public:
 	virtual void GoAway() {}
 
 	//Interfaces para atacar y recibir daño
-	virtual void Attack(IAttacker* other) const override;
+	virtual void Attack(IDamageable* other) const override;
 	virtual void ReceiveDamage(int damageToAdd) override;
 
 	bool IsDestroyed() const { return isDestroyed; }

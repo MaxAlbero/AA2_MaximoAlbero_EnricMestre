@@ -7,7 +7,7 @@
 #include "IAttacker.h"
 #include "IDamageable.h"
 
-class Player : public ImageObject/*, IAttacker, IDamageable*/
+class Player : public ImageObject, public IAttacker, public IDamageable
 {
 private:
 	int energy; //shields/shieldsPower... values from 0 to 100
@@ -49,5 +49,9 @@ public:
 	}
 
 	void CheckBorders();
+
+	//Interfaces para atacar y recibir daño
+	virtual void Attack(IDamageable* other) const override {}
+	virtual void ReceiveDamage(int damageToAdd) override {}
 
 };

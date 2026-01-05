@@ -6,19 +6,25 @@ void Enemy::OnCollision(Object* other)
 {
 	Bullet* bullet = dynamic_cast<Bullet*>(other);
 	if (bullet != nullptr) {
-		enemyHealth -= 10;
+		ReceiveDamage(10);
 
-		std::cout << "ENEMY HEALTH: " << enemyHealth << std::endl;
+		//enemyHealth -= 10;
 
-		if (enemyHealth <= 0)
-		{
-			Destroy();
-			std::cout << "MUELTO DIAVLO" << std::endl;
-		}
+		//std::cout << "ENEMY HEALTH: " << enemyHealth << std::endl;
+
+		//if (enemyHealth <= 0)
+		//{
+		//	Destroy();
+		//	std::cout << "MUELTO DIAVLO" << std::endl;
+		//}
 	}   
+	//else if () { //HERE SHOULD GO THE PLAYER REFERENCE TO MAKE IT THAT IF THEY TOUCH, THE PLAYER LOSES HEALTH (SO IT PROBABLY NEEDS A MANAGER FOR THE ENTITIES TO MAKE IT EASIER)
+	//					OR MAYBE PUTTING THIS INTERACTION IN THE PLAYER IS CORRECT TOO
+	//}
+
 }
 
-void Enemy::Attack(IAttacker* other) const {
+void Enemy::Attack(IDamageable* other) const {
 	std::cout << "Enemy attacks!" << std::endl;
 }
 
@@ -29,6 +35,7 @@ void Enemy::ReceiveDamage(int damageToAdd) {
 	if (enemyHealth <= 0) {
 		// Destruir enemigo
 		Destroy();
+		std::cout << "Enemy Dead!" << std::endl;
 	}
 }
 
