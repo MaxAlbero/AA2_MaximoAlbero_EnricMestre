@@ -62,4 +62,7 @@ public:
 	}
 
 	void Render() override { Scene::Render(); }
+private:
+	void SaveScore();
+	void LoadLevelFromFile(std::string path);
 };

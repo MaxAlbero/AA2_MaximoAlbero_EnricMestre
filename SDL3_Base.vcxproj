@@ -25,7 +25,6 @@
     <ClCompile Include="source\Bullet.cpp" />
     <ClCompile Include="source\Enemy.cpp" />
     <ClCompile Include="source\InputManager.cpp" />
-    <ClCompile Include="source\ImageObject.cpp" />
     <ClCompile Include="source\ImageRenderer.cpp" />
     <ClCompile Include="source\Game.cpp" />
     <ClCompile Include="source\main.cpp" />
@@ -49,6 +48,7 @@
     <ClInclude Include="source\Circler.h" />
     <ClInclude Include="source\CirclerBody.h" />
     <ClInclude Include="source\EnemyBullet.h" />
+    <ClInclude Include="source\EntitiesManager.h" />
     <ClInclude Include="source\IAttacker.h" />
     <ClInclude Include="source\IDamageable.h" />
     <ClInclude Include="source\Hmedusa.h" />
