@@ -209,6 +209,15 @@
     <ClInclude Include="source\EntitiesManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="source\HighscoreManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="source\EnergyRecharge.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="source\SpeedPowerUp.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="resources\image.png">

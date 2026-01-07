@@ -48,7 +48,9 @@
     <ClInclude Include="source\Circler.h" />
     <ClInclude Include="source\CirclerBody.h" />
     <ClInclude Include="source\EnemyBullet.h" />
+    <ClInclude Include="source\EnergyRecharge.h" />
     <ClInclude Include="source\EntitiesManager.h" />
+    <ClInclude Include="source\HighscoreManager.h" />
     <ClInclude Include="source\IAttacker.h" />
     <ClInclude Include="source\IDamageable.h" />
     <ClInclude Include="source\Hmedusa.h" />
@@ -78,6 +80,7 @@
     <ClInclude Include="source\Spawner.h" />
     <ClInclude Include="source\SpawnerManager.h" />
     <ClInclude Include="source\SpawnWaves.h" />
+    <ClInclude Include="source\SpeedPowerUp.h" />
     <ClInclude Include="source\TestObject.h" />
     <ClInclude Include="source\TextObject.h" />
     <ClInclude Include="source\TimeManager.h" />
