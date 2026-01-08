@@ -11,7 +11,9 @@ class Player : public ImageObject, public IAttacker, public IDamageable
 {
 private:
 	int energy; //shields/shieldsPower... values from 0 to 100
+	int maxEnergy;
 	float maxSpeed;
+	float currentSpeedMultiplier;
 
 public:
 	Player()
@@ -26,10 +28,20 @@ public:
 		_physics->SetLinearDrag(10.f);
 		_physics->SetAngularDrag(0.1f);
 
-		energy = 100;
+		energy = 30;
+		maxEnergy = 100;
 		maxSpeed = 1.0f;
+		currentSpeedMultiplier = 1.0f;
+
 		_physics->AddCollider(new AABB(_transform->position, _transform->size));
+
+		std::cout << "Current energy: " << energy << std::endl;
 	}
+
+	int GetEnergy() const { return energy; }
+	int GetMaxEnergy() const { return maxEnergy; }
+	float GetMaxSpeed() const { return maxSpeed; }
+	float GetSpeedMultiplier() const { return currentSpeedMultiplier; }
 
 	void Update() override {
 
@@ -38,6 +50,26 @@ public:
 		CheckBorders();
 
 		Object::Update();
+	}
+
+	void SetEnergy(int newEnergy) {
+		energy = newEnergy;
+		if (energy > maxEnergy) energy = maxEnergy;
+		if (energy < 0) energy = 0;
+	}
+
+	void SetMaxSpeed(float newMaxSpeed) {
+		maxSpeed = newMaxSpeed;
+	}
+
+	void IncreaseSpeed(float multiplier) {
+		currentSpeedMultiplier += multiplier;
+		std::cout << "Speed increased! New multiplier: " << currentSpeedMultiplier << std::endl;
+	}
+
+	void RestoreFullEnergy() {
+		energy = maxEnergy;
+		std::cout << "Energy fully restored! Current energy: " << energy << std::endl;
 	}
 
 	void Move();
