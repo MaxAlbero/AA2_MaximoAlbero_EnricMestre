@@ -28,7 +28,6 @@
     <ClCompile Include="source\ImageRenderer.cpp" />
     <ClCompile Include="source\Game.cpp" />
     <ClCompile Include="source\main.cpp" />
-    <ClCompile Include="source\MainMenu.cpp" />
     <ClCompile Include="source\PowerUp.cpp" />
     <ClCompile Include="source\PowerUp1000.cpp" />
     <ClCompile Include="source\RenderManager.cpp" />
@@ -81,6 +80,7 @@
     <ClInclude Include="source\SpawnerManager.h" />
     <ClInclude Include="source\SpawnWaves.h" />
     <ClInclude Include="source\SpeedPowerUp.h" />
+    <ClInclude Include="source\SplashScreen.h" />
     <ClInclude Include="source\TestObject.h" />
     <ClInclude Include="source\TextObject.h" />
     <ClInclude Include="source\TimeManager.h" />

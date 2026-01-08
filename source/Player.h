@@ -20,10 +20,11 @@ public:
 		: ImageObject("resources/caballo.png", Vector2(0.f, 0.f), Vector2(306.f, 562.f)) {
 
 		// Posició random en tota la finestra
-		Vector2 randomPosition = Vector2(rand() % RM->WINDOW_WIDTH, rand() % RM->WINDOW_HEIGHT);
-		_transform->position = randomPosition;
+		//Vector2 randomPosition = Vector2(rand() % RM->WINDOW_WIDTH, rand() % RM->WINDOW_HEIGHT);
+
+		_transform->position = Vector2(RM->WINDOW_WIDTH / 6.0f, RM->WINDOW_HEIGHT / 2.0f);
 		_transform->scale = Vector2(0.5f, 0.5f);
-		_transform->rotation = 30.f;
+		//_transform->rotation = 30.f;
 
 		_physics->SetLinearDrag(10.f);
 		_physics->SetAngularDrag(0.1f);

@@ -11,7 +11,6 @@ public:
 		: ImageObject("resources/image.png", Vector2(0.f, 0.f), Vector2(306.f, 562.f)) {
 
 		_onClick = onClick;
-
 		//Test
 		_transform->position = Vector2(100.f, 100.f);
 		_transform->scale = Vector2(1.f, 1.f);
@@ -32,7 +31,7 @@ public:
 
 	void OnHoverEnter()
 	{
-		_transform->rotation = 90.f;
+		_transform->scale = Vector2(1.2f, 1.2f);
 		_isHovered = true;
 	}
 
